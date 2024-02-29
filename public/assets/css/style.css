@@ -27,11 +27,12 @@ img {
 a {
   text-decoration: none;
   outline: none;
-  color: rgb(81, 241, 235); 
+  color: rgb(96, 66, 98); 
 }
 
 a:hover {
-  color: rgb(13, 185, 233); 
+  color: rgb(8, 8, 8); 
+  font-size: 17px;
 }
 
 ul {
@@ -53,11 +54,12 @@ textarea {
 }
 
 .form-02-main{
-  background:url(../images/back2.jpg);
+  background:url(../images/back3.jpg);
   background-size:cover;
   background-repeat:no-repeat;
-  background-position:center;
-  position:relative;
+  /* background-position:center; */
+  background-attachment: fixed;
+  /* position:relative; */
   z-index:2;
   overflow:hidden;
 }
@@ -66,8 +68,10 @@ textarea {
   
   background-repeat:no-repeat;
   background-size:cover;
-  padding:40px 0px;
+  padding:51px 0px;
   position:relative;
+  background-attachment: fixed;
+
 
 }
 
@@ -76,9 +80,10 @@ textarea {
   display:block;
   margin:20px auto;
   padding:25px 50px 25px;
-  background:rgba(109, 108, 108, 0.6);
-  border-radius:6px;
+  background:rgba(238, 241, 241, 0.6);
+  border-radius:10px;
   z-index:9;
+  box-shadow: 5px 5px 10px lightblue;
 }
 
 .logo{
@@ -89,7 +94,7 @@ textarea {
 }
 
 .form-group{
-  padding:10px 0px;
+  padding:5px 0px;
   display:inline-block;
   width:100%;
   position:relative;
@@ -122,6 +127,11 @@ textarea {
     text-align: center;
     font-size: 16px;
     color: #fff;
+}
+
+._btn_04:hover{
+  
+  background: #264da1;
 }
 
 ._btn_04 a{

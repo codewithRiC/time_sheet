@@ -61,6 +61,18 @@
                                     placeholder="Enter Password" required="" aria-required="true">
                             </div>
 
+                            
+                            <div class="form-group">
+                                <input type="password" name="conpassword" class="form-control _ge_de_ol"
+                                    placeholder="Enter Confirm Password" required="" aria-required="true">
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <input type="text" name="security" class="form-control _ge_de_ol"
+                                    placeholder="Enter Security Question" required="" aria-required="true">
+                            </div>
+
                             <div class="form-group">
                                 <div class="_btn_04">
                                     <a href="{{ route('login') }}">Register</a>
