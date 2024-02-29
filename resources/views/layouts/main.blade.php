@@ -1,3 +1,4 @@
+@include('layouts.navigation')
 @include('layouts.header')
 <div class="container">
     @yield('main-section')

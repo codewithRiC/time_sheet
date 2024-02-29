@@ -13,8 +13,10 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'login']);
 
-Route::get('/about',function(){
-    return view('about');
-});
+
+Route::get('login', [UserController::class, 'login'])->name('login');
+Route::get('register', [UserController::class, 'register'])->name('register');
+Route::get('about', [UserController::class, 'about'])->name('about');
+Route::get('home', [UserController::class, 'home'])->name('home');
