@@ -24,7 +24,7 @@
         <div class="container pt-4">
             @include('layouts.navigation')
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-lg-6">
                     <div class="_lk_de">
                         <div class="form-03-main">
                             <div class="logo">
@@ -34,6 +34,7 @@
                             <div class="form-group">
                                 <label for="designation"></label>
                                 <select class="form-control" name="designation" id="designation">
+                                  <option selected>Designation</option>
                                   <option> ADMIN</option>
                                   <option> MANAGER</option>
                                   <option> EMPLOYEE</option>
@@ -54,18 +55,28 @@
 
                             <div class="checkbox form-group">
                                
-                                <a href="#">Forgot Password</a>
+                                <a href="{{ route('forgetpassword') }}">Forgot Password</a>
                             </div>
 
                             <div class="form-group">
-                                <div class="_btn_04">
-                                    <a href="{{ route('home') }}">Login</a>
-                                </div>
+                                
+                                    <a href="{{ route('home') }}"><div class="_btn_04">Login </div></a>
+                               
                             </div>
 
                             
                         </div>
+
+                        
                     </div>
+                </div>
+
+                <div class="col-lg-6 _lk_de ">
+
+                    <img src="assets/images/prom1.png"  alt="Company pic">
+
+
+
                 </div>
             </div>
         </div>

@@ -20,3 +20,5 @@ Route::get('login', [UserController::class, 'login'])->name('login');
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::get('about', [UserController::class, 'about'])->name('about');
 Route::get('home', [UserController::class, 'home'])->name('home');
+Route::get('forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
+Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('resetpassword');

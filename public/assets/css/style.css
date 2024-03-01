@@ -54,7 +54,7 @@ textarea {
 }
 
 .form-02-main{
-  background:url(../images/back3.jpg);
+  background:url(../images/back2.jpg);
   background-size:cover;
   background-repeat:no-repeat;
   /* background-position:center; */
@@ -75,15 +75,17 @@ textarea {
 
 }
 
+
+
 .form-03-main{
   width:500px;
   display:block;
   margin:20px auto;
   padding:25px 50px 25px;
-  background:rgba(238, 241, 241, 0.6);
+  background:rgba(225, 242, 242, 0.985);
   border-radius:10px;
   z-index:9;
-  box-shadow: 5px 5px 10px lightblue;
+  box-shadow: 5px 5px  10px lightblue;
 }
 
 .logo{
@@ -99,6 +101,8 @@ textarea {
   width:100%;
   position:relative;
 }
+
+
 
 .form-group p{
   margin:0px;

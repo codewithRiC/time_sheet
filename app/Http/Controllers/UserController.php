@@ -22,5 +22,11 @@ class UserController extends Controller
         return view('about');
     }
 
+    public function forgetpassword(){
+        return view('forgetpassword');
+    }
 
+    public function resetpassword(){
+        return view('resetpassword');
+    }
 }
