@@ -1,9 +1,10 @@
 @extends('layouts.main')
 
 @push('title')
-    <title>Home</title>
+    <title>Employee</title>
 @endpush    
-    
+ 
+  
 
 @section('main-section')
    
@@ -15,7 +16,7 @@
                     <div class="sb-sidenav-menu-heading text-dark">Core</div>
                     <a class="nav-link text-dark" href="{{ route('home') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
-                        Dashboard
+                        Employee Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading text-dark">Interface</div>
                     <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -45,9 +46,6 @@
                                     <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
                                     <a class="nav-link text-dark" href="{{ route('register') }}">Register</a>
                                     <a class="nav-link text-dark" href="{{ route('forgetpassword') }}">Forgot Password</a>
-                                    <a class="nav-link text-dark" href="{{ route('admindashboard') }}">Admin</a>
-                                    <a class="nav-link text-dark" href="{{ route('managerdashboard') }}">Manager</a>
-                                    <a class="nav-link text-dark" href="{{ route('employeedashboard') }}">Employee</a>
                                 </nav>
                             </div>
                           

@@ -1,9 +1,10 @@
 @extends('layouts.main')
 
 @push('title')
-    <title>Home</title>
+    <title>Admin</title>
 @endpush    
     
+
 
 @section('main-section')
    
@@ -12,21 +13,23 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark bg-white" id="sidenavAccordion" style="box-shadow: 0px 10px 10px grey">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading text-dark">Core</div>
+                    <div class="sb-sidenav-menu-heading text-dark"></div>
                     <a class="nav-link text-dark" href="{{ route('home') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
-                        Dashboard
+                        Admin Dashboard
                     </a>
-                    <div class="sb-sidenav-menu-heading text-dark">Interface</div>
+                    <div class="sb-sidenav-menu-heading text-dark">Departments</div>
                     <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns text-dark"></i></div>
-                        Layouts
+                        Managers
                         <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link text-dark" href="layout-static.html">Static Navigation</a>
                             <a class="nav-link text-dark" href="layout-sidenav-light.html">Light Sidenav</a>
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">Light Sidenav</a>
+                            
                         </nav>
                     </div>
                     <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -45,22 +48,19 @@
                                     <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
                                     <a class="nav-link text-dark" href="{{ route('register') }}">Register</a>
                                     <a class="nav-link text-dark" href="{{ route('forgetpassword') }}">Forgot Password</a>
-                                    <a class="nav-link text-dark" href="{{ route('admindashboard') }}">Admin</a>
-                                    <a class="nav-link text-dark" href="{{ route('managerdashboard') }}">Manager</a>
-                                    <a class="nav-link text-dark" href="{{ route('employeedashboard') }}">Employee</a>
                                 </nav>
                             </div>
                           
                         </nav>
                     </div>
-                    <div class="sb-sidenav-menu-heading text-dark">Addons</div>
+                    <div class="sb-sidenav-menu-heading text-dark">Reports</div>
                     <a class="nav-link text-dark" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area text-dark"></i></div>
-                        Charts
+                        Project wise Report Generation
                     </a>
                     <a class="nav-link text-dark" href="tables.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-table text-dark"></i></div>
-                        Tables
+                        Employee wise Report Generation
                     </a>
                 </div>
             </div>

@@ -29,4 +29,17 @@ class UserController extends Controller
     public function resetpassword(){
         return view('resetpassword');
     }
+
+    public function admindashboard(){
+        return view('admin.dashboard');
+    }
+    public function managerdashboard(){
+        return view('manager.dashboard');
+    }
+    public function employeedashboard(){
+        return view('employee.dashboard');
+    }
+
 }
+
+

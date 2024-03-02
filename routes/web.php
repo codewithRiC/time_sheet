@@ -22,3 +22,6 @@ Route::get('about', [UserController::class, 'about'])->name('about');
 Route::get('home', [UserController::class, 'home'])->name('home');
 Route::get('forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
 Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('resetpassword');
+Route::get('admindashboard', [UserController::class, 'admindashboard'])->name('admindashboard');
+Route::get('managerdashboard', [UserController::class, 'managerdashboard'])->name('managerdashboard');
+Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->name('employeedashboard');
