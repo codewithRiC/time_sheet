@@ -13,46 +13,79 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark bg-white" id="sidenavAccordion" style="box-shadow: 0px 10px 10px grey">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading text-dark"></div>
+                    <div class="sb-sidenav-menu-heading text-dark">
+
+                        @if(session()->has('name'))
+
+                        {{ session()->get('name') }}
+
+                        @endif
+                    </div>
                     <a class="nav-link text-dark" href="{{ route('home') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
                         Admin Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading text-dark">Departments</div>
                     <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns text-dark"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie text-dark"></i></div>
                         Managers
                         <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link text-dark" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link text-dark" href="layout-sidenav-light.html">Light Sidenav</a>
-                            <a class="nav-link text-dark" href="layout-sidenav-light.html">Light Sidenav</a>
-                            
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open text-dark"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-dark"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion text-dark" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-dark"></i></div>
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus text-dark"></i></div>
+                                Create Manager
                             </a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav text-dark">
-                                    <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
-                                    <a class="nav-link text-dark" href="{{ route('register') }}">Register</a>
-                                    <a class="nav-link text-dark" href="{{ route('forgetpassword') }}">Forgot Password</a>
-                                </nav>
-                            </div>
-                          
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear text-dark"></i></div>
+                                View/Edit Manager
+
+                            </a>
                         </nav>
                     </div>
+
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear text-dark"></i></div>
+                        Employee
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus text-dark"></i></div>
+                                Create Employee
+                            </a>
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear text-dark"></i></div>
+                                View/Edit Employee
+                            </a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-progress text-dark"></i></div>
+                        Projects
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-plus text-dark"></i></div>
+                                Create Projects
+                            </a>
+
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-sliders text-dark"></i></div>
+                                View/Edit Tasks
+                            </a>
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-bars text-dark"></i></div>
+                                View/Edit Projects
+                            </a>
+                        </nav>
+                    </div>
+                  
                     <div class="sb-sidenav-menu-heading text-dark">Reports</div>
                     <a class="nav-link text-dark" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area text-dark"></i></div>

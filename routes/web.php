@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\RegistrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,6 @@ Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('res
 Route::get('admindashboard', [UserController::class, 'admindashboard'])->name('admindashboard');
 Route::get('managerdashboard', [UserController::class, 'managerdashboard'])->name('managerdashboard');
 Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->name('employeedashboard');
+
+Route::post('/register', [RegistrationController::class, 'register']);
+Route::post('/login', [RegistrationController::class, 'login']);

@@ -13,52 +13,79 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark bg-white" id="sidenavAccordion" style="box-shadow: 0px 10px 10px grey">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading text-dark">Core</div>
+                    <div class="sb-sidenav-menu-heading text-dark">
+                        @if(session()->has('name'))
+
+                        {{ session()->get('name') }}
+
+                        @endif
+                    </div>
                     <a class="nav-link text-dark" href="{{ route('home') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
                         Employee Dashboard
                     </a>
-                    <div class="sb-sidenav-menu-heading text-dark">Interface</div>
-                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns text-dark"></i></div>
-                        Layouts
+                    <div class="sb-sidenav-menu-heading text-dark">Departments</div>
+                   
+
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear text-dark"></i></div>
+                        Planning Worksheet
                         <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link text-dark" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link text-dark" href="layout-sidenav-light.html">Light Sidenav</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open text-dark"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-dark"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion text-dark" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down text-dark"></i></div>
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days text-dark"></i></div>
+                                Create Planning
                             </a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav text-dark">
-                                    <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
-                                    <a class="nav-link text-dark" href="{{ route('register') }}">Register</a>
-                                    <a class="nav-link text-dark" href="{{ route('forgetpassword') }}">Forgot Password</a>
-                                </nav>
-                            </div>
-                          
+
+                           
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-wrench text-dark"></i></div>
+                                View/Edit Planning
+                            </a>
+
+
+
+                            
                         </nav>
                     </div>
-                    <div class="sb-sidenav-menu-heading text-dark">Addons</div>
+
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-progress text-dark"></i></div>
+                        Projects
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                           <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-eye text-dark"></i></div>
+                                View Assigned Tasks
+                            </a>
+
+                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-business-time text-dark"></i></div>
+                                Add time-slot 
+                            </a>
+                           
+
+                            <a class="nav-link text-dark" href="layout-static.html">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up text-dark"></i></div>
+                                Updating Tasks
+                            </a>
+                            
+                            
+                        </nav>
+                    </div>
+                  
+                    <div class="sb-sidenav-menu-heading text-dark">Reports</div>
                     <a class="nav-link text-dark" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area text-dark"></i></div>
-                        Charts
+                        Project wise Report Generation
                     </a>
                     <a class="nav-link text-dark" href="tables.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-table text-dark"></i></div>
-                        Tables
+                        Employee wise Report Generation
                     </a>
                 </div>
             </div>

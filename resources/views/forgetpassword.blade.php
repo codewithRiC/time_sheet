@@ -26,16 +26,17 @@
             <div class="row">
                 <div class="col-md-12 mb-5 pb-4 mt-4 pt-4">
                     <div class="_lk_de">
-                        <div class="form-03-main">
-                            <div class="logo">
-                                <img src="assets/images/logo3.png">
-                            </div>
-                            
-                                    <h3 class="text-center">Password Recovery</h3>
-                           
+                        <form action="" method="post">
+                            <div class="form-03-main">
+                                <div class="logo">
+                                    <img src="assets/images/logo3.png">
+                                </div>
+
+                                <h3 class="text-center">Password Recovery</h3>
+
                                 <div class="form-group ">
 
-                                    <select class="form-control" id="securityQuestion">
+                                    <select  name="securityQuestion" class="form-control" id="securityQuestion">
                                         <option value="" selected disabled>Select a question...</option>
                                         <option value="What is your mother's maiden name?">What is your mother's
                                             maiden name?</option>
@@ -47,26 +48,28 @@
                                 </div>
                                 <div class="form-group " id="securityAnswerGroup" style="display: none;">
 
-                                    <input type="text" class="form-control" id="securityAnswer">
+                                    <input name="securityAnswer" type="text" class="form-control" id="securityAnswer">
                                 </div>
 
-                            
 
-                         
 
-                            <div class="checkbox form-group">
-                               
-                                <a href="{{ route('login') }}">Back To Login</a>
+
+
+                                <div class="checkbox form-group">
+
+                                    <a href="{{ route('login') }}">Back To Login</a>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <a href="{{ route('resetpassword') }}"><button type="submit"
+                                            class="_btn_04">Submit</button></a>
+
+                                </div>
+
+
                             </div>
-
-                            <div class="form-group">
-                                
-                                    <a href="{{ route('resetpassword') }}"><div class="_btn_04">Submit </div></a>
-                               
-                            </div>
-
-                            
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

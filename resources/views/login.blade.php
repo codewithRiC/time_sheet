@@ -26,54 +26,70 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="_lk_de">
-                        <div class="form-03-main">
-                            <div class="logo">
-                                <img src="assets/images/user.png">
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                <p>{{ session()->get('success') }}</p>
                             </div>
-
-                            <div class="form-group">
-                                <label for="designation"></label>
-                                <select class="form-control" name="designation" id="designation">
-                                  <option selected>Designation</option>
-                                  <option> ADMIN</option>
-                                  <option> MANAGER</option>
-                                  <option> EMPLOYEE</option>
-                                </select>
-                              </div>
-                              
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control _ge_de_ol"
-                                    placeholder="Enter Email" required="" aria-required="true">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control _ge_de_ol"
-                                    placeholder="Enter Password" required="" aria-required="true">
-                            </div>
-
-                         
-
-                            <div class="checkbox form-group">
-                               
-                                <a href="{{ route('forgetpassword') }}">Forgot Password</a>
-                            </div>
-
-                            <div class="form-group">
-                                
-                                    <a href="{{ route('home') }}"><div class="_btn_04">Login </div></a>
-                               
-                            </div>
-
                             
-                        </div>
+                        @endif
 
-                        
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                <p>{{ session()->get('error') }}</p>
+                            </div>
+                            
+                        @endif
+                        <form action="{{ url('/') }}/login" method="post">
+                            @csrf
+                            <div class="form-03-main">
+                                <div class="logo">
+                                    <img src="assets/images/user.png">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="designation"></label>
+                                    <select class="form-control" name="designation" id="designation">
+                                        <option selected>Designation</option>
+                                        <option> ADMIN</option>
+                                        <option> MANAGER</option>
+                                        <option> EMPLOYEE</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control _ge_de_ol"
+                                        placeholder="Enter Email" required="" aria-required="false">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control _ge_de_ol"
+                                        placeholder="Enter Password" required="" aria-required="true">
+                                </div>
+
+
+
+                                <div class="checkbox form-group">
+
+                                    <a href="{{ route('forgetpassword') }}">Forgot Password</a>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <a href="{{ route('home') }}"><button type="submit"
+                                            class="_btn_04">Login</button></a>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+
                     </div>
                 </div>
 
                 <div class="col-lg-6 _lk_de ">
 
-                    <img src="assets/images/prom1.png"  alt="Company pic">
+                    <img src="assets/images/prom1.png" alt="Company pic">
 
 
 

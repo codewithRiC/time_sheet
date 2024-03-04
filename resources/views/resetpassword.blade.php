@@ -26,6 +26,7 @@
             <div class="row">
                 <div class="col-md-12 mb-5 pb-4 mt-4 pt-4">
                     <div class="_lk_de">
+                        <form action="" method="post">
                         <div class="form-03-main">
                             <div class="logo">
                                 <img src="assets/images/logo4.png">
@@ -42,23 +43,15 @@
                                         <input type="password" name="confirmpassword" class="form-control _ge_de_ol"
                                             placeholder="Enter Confirm Password" required="" aria-required="true">
                                     </div>
-        
-        
-
-                            
-
-                         
-
-                            
-
                             <div class="form-group">
                                 
-                                    <a href="{{ route('login') }}"><div class="_btn_04">Submit </div></a>
+                                    <a href="{{ route('login') }}"><button type="submit" class="_btn_04">Submit</button></a>
                                
                             </div>
 
                             
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>

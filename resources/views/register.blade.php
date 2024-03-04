@@ -31,27 +31,53 @@
                                 <img src="assets/images/logo2.png">
                             </div>
 
-                            <form>
+                            <form action="{{ url('/') }}/register" method="post">
+                                @csrf
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control" id="name"
+                                    <input name="name" type="text" class="form-control" id="name"
                                         placeholder="Enter you name">
+                                        <span class="text-danger">
+                                            @error('name')
+                                                {{$message }}
+                                                
+                                            @enderror
+                                        </span>
                                 </div>
 
                                 <div class="form-group col-md-12">
 
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                    <input name="email" type="email" class="form-control" id="email"
+                                        placeholder="Email">
+                                        <span class="text-danger">
+                                            @error('email')
+                                                {{$message }}
+                                                
+                                            @enderror
+                                        </span>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
 
-                                        <input type="password" class="form-control" id="password"
+                                        <input name="password" type="password" class="form-control" id="password"
                                             placeholder="Password">
+                                            <span class="text-danger">
+                                                @error('password')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                        <input type="password" class="form-control" id="confirmpassword"
-                                            placeholder="Confirm Password">
+                                        <input name="confirmpassword" type="password" class="form-control"
+                                            id="confirmpassword" placeholder="Confirm Password">
+                                            <span class="text-danger">
+                                                @error('confirmpassword')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
                                 </div>
 
@@ -59,16 +85,29 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
 
-                                        <input type="number" class="form-control" id="phn" placeholder="Phone ">
+                                        <input name="phone" type="number" class="form-control" id="phone"
+                                            placeholder="Phone ">
+                                            <span class="text-danger">
+                                                @error('phone')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                        <select id="designation" class="form-control">
+                                        <select name="designation" id="designation" class="form-control">
                                             <option selected>Designation</option>
                                             <option>ADMIN</option>
                                             <option>MANAGER</option>
                                             <option>EMPLOYEE</option>
                                         </select>
+                                        <span class="text-danger">
+                                            @error('designation')
+                                                {{"select a designation" }}
+                                                
+                                            @enderror
+                                        </span>
                                     </div>
 
                                 </div>
@@ -76,7 +115,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
 
-                                        <select class="form-control" id="securityQuestion">
+                                        <select name="securityQuestion" class="form-control" id="securityQuestion">
                                             <option value="" selected disabled>Select a question...</option>
                                             <option value="What is your mother's maiden name?">What is your mother's
                                                 maiden name?</option>
@@ -88,17 +127,24 @@
                                     </div>
                                     <div class="form-group col-md-6" id="securityAnswerGroup" style="display: none;">
 
-                                        <input type="text" class="form-control" id="securityAnswer">
+                                        <input name="securityAnswer" type="text" class="form-control"
+                                            id="securityAnswer">
+                                            <span class="text-danger">
+                                                @error('securityAnswer')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
 
                                 </div>
-
+                               
+                                    <button type="submit" class="_btn_04">Register</button>
+                                
                             </form>
 
 
-                            <a href="{{ route('login') }}">
-                                <div class="_btn_04">Register</div>
-                            </a>
+
 
                         </div>
 
