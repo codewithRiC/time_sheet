@@ -94,4 +94,77 @@ class RegistrationController extends Controller
    
         
     }
+
+
+    public function forgetpassword(Request $req)
+    {
+        //validation
+    $req->validate(
+        [
+            
+
+            'securityQuestion'=>'required',
+            'securityAnswer'=>'required'
+           
+        ]
+
+    );
+
+    //insert query
+    $user=Registration::where('securityQuestion',$req->input('securityQuestion'))->where('securityAnswer',$req->input('securityAnswer'))->first();
+
+
+
+   if($user){
+
+        session()->put('id',$user->id);
+        session()->put('designation',$user->designation);
+        session()->put('name',$user->name);
+       
+
+        return redirect('resetpassword')->with($user->id);
+    }
+
+   
+   else{
+     return redirect('forgetpassword')->with('error','Wrong attempt');
+   }
+
+        
+      
+   
+        
+    }
+
+    public function resetpassword(Request $req)
+    {
+        //validation
+     
+     
+
+    $req->validate(
+        [
+            
+
+            'password'=>'required',
+            'confirmpassword'=>'required|same:password'
+           
+        ]
+
+    );
+
+    $id = session()->get('id');
+
+  $user=Registration::find($id);
+
+
+
+ 
+  $user->password=$req['password'];
+  $user->confirmpassword=md5($req['confirmpassword']);
+  $user->save();
+
+    return redirect('login')->with('successpassword','Password set successfully');
+}
+
 }

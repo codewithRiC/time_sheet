@@ -28,3 +28,5 @@ Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->n
 
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::post('/login', [RegistrationController::class, 'login']);
+Route::post('/forgetpassword', [RegistrationController::class, 'forgetpassword']);
+Route::post('/resetpassword', [RegistrationController::class, 'resetpassword']);

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>ForgetPassword </title>
+    <title>ResetPassword </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,8 @@
             <div class="row">
                 <div class="col-md-12 mb-5 pb-4 mt-4 pt-4">
                     <div class="_lk_de">
-                        <form action="" method="post">
+                        <form action="{{ url('/') }}/resetpassword" method="post">
+                            @csrf
                         <div class="form-03-main">
                             <div class="logo">
                                 <img src="assets/images/logo4.png">
@@ -37,15 +38,28 @@
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control _ge_de_ol"
                                             placeholder="Enter New Password" required="" aria-required="true">
+
+                                            <span class="text-danger">
+                                                @error('password')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="password" name="confirmpassword" class="form-control _ge_de_ol"
                                             placeholder="Enter Confirm Password" required="" aria-required="true">
+
+                                            <span class="text-danger">
+                                                @error('confirmpassword')
+                                                    {{$message }}
+                                                    
+                                                @enderror
+                                            </span>
                                     </div>
                             <div class="form-group">
-                                
-                                    <a href="{{ route('login') }}"><button type="submit" class="_btn_04">Submit</button></a>
+                                <button type="submit" class="_btn_04">Submit</button>
                                
                             </div>
 

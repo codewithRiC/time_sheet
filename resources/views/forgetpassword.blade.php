@@ -26,7 +26,16 @@
             <div class="row">
                 <div class="col-md-12 mb-5 pb-4 mt-4 pt-4">
                     <div class="_lk_de">
-                        <form action="" method="post">
+
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                <p>{{ session()->get('error') }}</p>
+
+                            </div>
+                            
+                        @endif
+                        <form action="{{ url('/') }}/forgetpassword" method="post">
+                            @csrf
                             <div class="form-03-main">
                                 <div class="logo">
                                     <img src="assets/images/logo3.png">
@@ -45,10 +54,23 @@
                                         <option value="In what city were you born?">In what city were you born?
                                         </option>
                                     </select>
+                                    <span class="text-danger">
+                                        @error('securityQuestion')
+                                            {{$message }}
+                                            
+                                        @enderror
+                                    </span>
                                 </div>
                                 <div class="form-group " id="securityAnswerGroup" style="display: none;">
 
                                     <input name="securityAnswer" type="text" class="form-control" id="securityAnswer">
+
+                                    <span class="text-danger">
+                                        @error('securityAnswer')
+                                            {{$message }}
+                                            
+                                        @enderror
+                                    </span>
                                 </div>
 
 
@@ -61,9 +83,9 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <button type="submit" class="_btn_04">Submit</button>  
+                                         
 
-                                    <a href="{{ route('resetpassword') }}"><button type="submit"
-                                            class="_btn_04">Submit</button></a>
 
                                 </div>
 

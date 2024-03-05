@@ -33,6 +33,13 @@
                             
                         @endif
 
+                        @if (session()->has('successpassword'))
+                        <div class="alert alert-success">
+                            <p>{{ session()->get('successpassword') }}</p>
+                        </div>
+                        
+                    @endif
+
                         @if (session()->has('error'))
                             <div class="alert alert-danger">
                                 <p>{{ session()->get('error') }}</p>
@@ -54,16 +61,37 @@
                                         <option> MANAGER</option>
                                         <option> EMPLOYEE</option>
                                     </select>
+
+                                    <span class="text-danger">
+                                        @error('designation')
+                                            {{$message }}
+                                            
+                                        @enderror
+                                    </span>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control _ge_de_ol"
                                         placeholder="Enter Email" required="" aria-required="false">
+
+                                        <span class="text-danger">
+                                            @error('email')
+                                                {{$message }}
+                                                
+                                            @enderror
+                                        </span>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control _ge_de_ol"
                                         placeholder="Enter Password" required="" aria-required="true">
+
+                                        <span class="text-danger">
+                                            @error('password')
+                                                {{$message }}
+                                                
+                                            @enderror
+                                        </span>
                                 </div>
 
 

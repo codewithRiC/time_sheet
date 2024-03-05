@@ -77,6 +77,8 @@
                             
                         </nav>
                     </div>
+
+                    
                   
                     <div class="sb-sidenav-menu-heading text-dark">Reports</div>
                     <a class="nav-link text-dark" href="charts.html">
