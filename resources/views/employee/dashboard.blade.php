@@ -1,99 +1,15 @@
-@extends('layouts.main')
 
 @push('title')
-    <title>Employee</title>
-@endpush    
+<title>Employee</title>
+@endpush 
+
+@include('layouts.employeeheader')
+   
  
   
 
-@section('main-section')
    
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark bg-white" id="sidenavAccordion" style="box-shadow: 0px 10px 10px grey">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading text-dark">
-                        @if(session()->has('name'))
 
-                        {{ session()->get('name') }}
-
-                        @endif
-                    </div>
-                    <a class="nav-link text-dark" href="{{ route('home') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
-                        Employee Dashboard
-                    </a>
-                    <div class="sb-sidenav-menu-heading text-dark">Departments</div>
-                   
-
-                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear text-dark"></i></div>
-                        Planning Worksheet
-                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link text-dark" href="layout-static.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days text-dark"></i></div>
-                                Create Planning
-                            </a>
-
-                           
-                            <a class="nav-link text-dark" href="layout-static.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-wrench text-dark"></i></div>
-                                View/Edit Planning
-                            </a>
-
-
-
-                            
-                        </nav>
-                    </div>
-
-                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-progress text-dark"></i></div>
-                        Projects
-                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                           <a class="nav-link text-dark" href="layout-sidenav-light.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-eye text-dark"></i></div>
-                                View Assigned Tasks
-                            </a>
-
-                            <a class="nav-link text-dark" href="layout-sidenav-light.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-business-time text-dark"></i></div>
-                                Add time-slot 
-                            </a>
-                           
-
-                            <a class="nav-link text-dark" href="layout-static.html">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up text-dark"></i></div>
-                                Updating Tasks
-                            </a>
-                            
-                            
-                        </nav>
-                    </div>
-
-                    
-                  
-                    <div class="sb-sidenav-menu-heading text-dark">Reports</div>
-                    <a class="nav-link text-dark" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area text-dark"></i></div>
-                        Project wise Report Generation
-                    </a>
-                    <a class="nav-link text-dark" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table text-dark"></i></div>
-                        Employee wise Report Generation
-                    </a>
-                </div>
-            </div>
-           
-        </nav>
-    </div>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
@@ -213,4 +129,6 @@
        
     </div>
 </div>
-@endsection
+
+
+@include('layouts.footer')

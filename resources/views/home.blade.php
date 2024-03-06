@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@include('layouts.header')
 
 @push('title')
     <title>Home</title>
 @endpush    
     
 
-@section('main-section')
+
    
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -186,4 +186,5 @@
        
     </div>
 </div>
-@endsection
+
+@include('layouts.footer')

@@ -25,6 +25,28 @@ Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('res
 Route::get('admindashboard', [UserController::class, 'admindashboard'])->name('admindashboard');
 Route::get('managerdashboard', [UserController::class, 'managerdashboard'])->name('managerdashboard');
 Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->name('employeedashboard');
+Route::get('profileview', [UserController::class, 'profileview'])->name('profileview');
+Route::get('profileupdate', [UserController::class, 'profileupdate'])->name('profileupdate');
+Route::get('createemployee', [UserController::class, 'createemployee'])->name('createemployee');
+Route::get('createmanager', [UserController::class, 'createmanager'])->name('createmanager');
+Route::get('managerupdate', [UserController::class, 'managerupdate'])->name('managerupdate');
+Route::get('employeeupdate', [UserController::class, 'employeeupdate'])->name('employeeupdate');
+Route::get('createdepartment', [UserController::class, 'createdepartment'])->name('createdepartment');
+Route::get('departmentupdate', [UserController::class, 'departmentupdate'])->name('departmentupdate');
+Route::get('createplan', [UserController::class, 'createplan'])->name('createplan');
+Route::get('planupdate', [UserController::class, 'planupdate'])->name('planupdate');
+Route::get('createproject', [UserController::class, 'createproject'])->name('createproject');
+Route::get('createtasks', [UserController::class, 'createtasks'])->name('createtasks');
+Route::get('projectupdate', [UserController::class, 'projectupdate'])->name('projectupdate');
+Route::get('tasksupdate', [UserController::class, 'tasksupdate'])->name('tasksupdate');
+Route::get('assigntasks', [UserController::class, 'assigntasks'])->name('assigntasks');
+Route::get('assigntasksview', [UserController::class, 'assigntasksview'])->name('assigntasksview');
+Route::get('addtimeslot', [UserController::class, 'addtimeslot'])->name('addtimeslot');
+Route::get('projectreport', [UserController::class, 'projectreport'])->name('projectreport');
+Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
+
+
+
 
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::post('/login', [RegistrationController::class, 'login']);

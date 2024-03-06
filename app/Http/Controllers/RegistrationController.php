@@ -64,24 +64,26 @@ class RegistrationController extends Controller
     //insert query
     $user=Registration::where('email',$req->input('email'))->where('designation',$req->input('designation'))->where('password',$req->password)->first();
 
-
+    
 
    if($user){
 
         session()->put('id',$user->id);
+        session()->put('email',$user->email);
+        session()->put('phone',$user->phone);
         session()->put('designation',$user->designation);
         session()->put('name',$user->name);
        if($user->designation=='ADMIN'){
           
-           return redirect('admindashboard')->with($user->name);
+           return redirect('admindashboard');
        }
        if($user->designation=='MANAGER'){
        
-        return redirect('managerdashboard')->with($user->name);
+        return redirect('managerdashboard');
     }
     if($user->designation=='EMPLOYEE'){
 
-        return redirect('employeedashboard')->with($user->name);
+        return redirect('employeedashboard');
     }
 
    }

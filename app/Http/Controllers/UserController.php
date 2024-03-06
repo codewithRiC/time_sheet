@@ -40,6 +40,86 @@ class UserController extends Controller
         return view('employee.dashboard');
     }
 
+    public function profileview(){
+        return view('profileview');
+    }
+
+    public function profileupdate(){
+        return view('profileupdate');
+    }
+
+    public function createemployee(){
+        return view('createemployee');
+    }
+
+    public function createmanager(){
+        return view('createmanager');
+    }
+
+    public function createdepartment(){
+        return view('createdepartment');
+    }
+
+    public function employeeupdate(){
+        return view('employeeupdate');
+    }
+
+    public function managerupdate(){
+        return view('managerupdate');
+    }
+
+    public function departmentupdate(){
+        return view('departmentupdate');
+    }
+
+    public function createplan(){
+        return view('createplan');
+    }
+
+    public function planupdate(){
+        return view('planupdate');
+    }
+
+    
+    public function createproject(){
+        return view('createproject');
+    }
+
+    
+    public function createtasks(){
+        return view('createtasks');
+    }
+
+    
+    public function projectupdate(){
+        return view('projectupdate');
+    }
+
+    
+    public function tasksupdate(){
+        return view('tasksupdate');
+    }
+
+    public function assigntasks(){
+        return view('assigntasks');
+    }
+    
+    public function assigntasksview(){
+        return view('assigntasksview');
+    }
+
+    public function addtimeslot(){
+        return view('addtimeslot');
+    }
+
+    public function projectreport(){
+        return view('projectreport');
+    }
+
+    public function employeereport(){
+        return view('employeereport');
+    }
+
 }
 
 
