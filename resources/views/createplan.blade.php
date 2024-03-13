@@ -3,17 +3,24 @@
 @endpush
 
 
-@if (session()->get('designation')=="EMPLOYEE")
-@include('layouts.employeeheader')       
+@if (session()->get('designation') == 'EMPLOYEE')
+    @include('layouts.employeeheader')
 @endif
 
 
 <div id="layoutSidenav_content">
-            <main>
-                Create Plan
+
+
+    <main>
+        create plan
+          
+
     </main>
 
-    </div>
-    </div>
 
-    @include('layouts.footer')
+</div>
+</div>
+
+
+
+@include('layouts.footer')

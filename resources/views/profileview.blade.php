@@ -37,6 +37,9 @@
 
                                   
                                 </span></span>
+                                    @if (session()->has('email'))
+                                      {{ session()->get('email') }}
+                                    @endif
                                 <span> </span>
                             </div>
                         </div>
