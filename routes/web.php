@@ -25,8 +25,8 @@ Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('res
 Route::get('admindashboard', [UserController::class, 'admindashboard'])->name('admindashboard');
 Route::get('managerdashboard', [UserController::class, 'managerdashboard'])->name('managerdashboard');
 Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->name('employeedashboard');
-Route::get('profileview', [UserController::class, 'profileview'])->name('profileview');
-Route::get('profileupdate', [UserController::class, 'profileupdate'])->name('profileupdate');
+Route::get('profileview/{id}', [UserController::class, 'profileview'])->name('profileview');
+Route::get('profileupdate/{id}', [UserController::class, 'profile'])->name('profileupdate');
 Route::get('createemployee', [UserController::class, 'createemployee'])->name('createemployee');
 Route::get('createmanager', [UserController::class, 'createmanager'])->name('createmanager');
 Route::get('managerupdate', [UserController::class, 'managerupdate'])->name('managerupdate');
@@ -45,6 +45,7 @@ Route::get('addtimeslot', [UserController::class, 'addtimeslot'])->name('addtime
 Route::get('projectreport', [UserController::class, 'projectreport'])->name('projectreport');
 Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
 
+Route::post('/profileupdate/{id}', [UserController::class, 'profileupdate']);
 
 
 
@@ -52,3 +53,4 @@ Route::post('/register', [RegistrationController::class, 'register']);
 Route::post('/login', [RegistrationController::class, 'login']);
 Route::post('/forgetpassword', [RegistrationController::class, 'forgetpassword']);
 Route::post('/resetpassword', [RegistrationController::class, 'resetpassword']);
+

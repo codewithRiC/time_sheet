@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('password',50);
             $table->string('confirmpassword',50);
             $table->string('phone',15);
+           
             $table->string('designation',50);
             $table->string('securityQuestion',100);
             $table->string('securityAnswer',50);
+
             $table->timestamps();
         });
     }

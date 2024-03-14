@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Registration;
 
 class UserController extends Controller
 {
@@ -40,12 +42,48 @@ class UserController extends Controller
         return view('employee.dashboard');
     }
 
-    public function profileview(){
-        return view('profileview');
+    public function profileview($id){
+        $user = Registration::find($id);
+        $data=compact('user');
+        return view('profileview')->with($data);
+
     }
 
-    public function profileupdate(){
-        return view('profileupdate');
+    public function profile($id){
+        $user = Registration::find($id);
+        $data=compact('user');
+        return view('profileupdate')->with($data);
+
+    }
+
+    public function profileupdate($id, Request $req){
+        $data = Registration::find($id);
+   
+        $data->name=$req['name'];
+        $data->email=$req['email'];
+        $data->address=$req['address'];
+        $data->pin=$req['pin'];
+        $data->phone=$req['phone'];
+        $data->state=$req['state'];
+        $data->qualification=$req['qualification'];
+        $data->designation=$req['designation'];
+        $data->yoe=$req['yoe'];
+        $data->details=$req['details'];
+        $data->save();
+
+        if($data->designation=='ADMIN'){
+          
+            return redirect('admindashboard');
+        }
+        if($data->designation=='MANAGER'){
+        
+         return redirect('managerdashboard');
+     }
+     if($data->designation=='EMPLOYEE'){
+ 
+         return redirect('employeedashboard');
+     }
+       
     }
 
     public function createemployee(){

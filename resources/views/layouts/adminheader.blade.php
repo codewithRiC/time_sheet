@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="assets/css/styles.css" rel="stylesheet">
-    <link href="assets/css/profile.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/css/styles.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/css/profile.css" rel="stylesheet">
 
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -23,7 +23,7 @@
         <!-- Navbar Brand-->
         <div class="mainhead" style="display: flex">
             <div class="logo ms-3">
-                <img src="assets/images/logo-main.png" alt="iig logo" height="50px">
+                <img src="{{ url('/') }}/assets/images/logo-main.png" alt="iig logo" height="50px">
             </div>
             <div class="mh mt-1">
                 <a class="navbar-brand ps-3 text-dark" href="#">IIG TECHNOLOGY</a>
@@ -47,8 +47,8 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw text-dark"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{ route('profileview') }}">Profile</a></li>
-                    <li><a class="dropdown-item" href="{{ route('profileupdate') }}">Edit</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profileview', ['id' => session()->get('id')]) }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profileupdate',['id' => session()->get('id')])  }}">Edit</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
