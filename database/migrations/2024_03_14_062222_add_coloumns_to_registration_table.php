@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('qualification',15)->nullable()->after('phone');
             $table->string('yoe',15)->nullable()->after('phone');
             $table->string('details',15)->nullable()->after('phone');
+           
         });
     }
 

@@ -31,9 +31,18 @@
                         <span class="font-weight-bold">
                             {{ $user->name }}
 
-                        </span></span>
-                            {{ $user->email }}
-                        <span> </span>
+                        </span>
+                        <span> {{ $user->email }} </span>
+                        <span>{{ 'ID:' }}
+                            @if (session()->get('designation') == 'ADMIN')
+                                {{ 'ADM' }}-{{ $user->id }}
+                            @elseif (session()->get('designation') == 'MANAGER')
+                                {{ 'MAN' }}-{{ $user->id }}
+                            @elseif (session()->get('designation') == 'EMPLOYEE')
+                                {{ 'EMP' }}-{{ $user->id }}
+                            @endif
+
+                        </span>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -81,7 +90,7 @@
                 </div>
             </div>
         </div>
-    
+
     </main>
 
 </div>

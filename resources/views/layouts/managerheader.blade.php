@@ -85,10 +85,10 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link text-dark" href="{{ route('createemployee') }}">
+                                {{-- <a class="nav-link text-dark" href="{{ route('createemployee') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus text-dark"></i></div>
                                     Create Employee
-                                </a>
+                                </a> --}}
     
                                 <a class="nav-link text-dark" href="{{ route('createdepartment') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users-rectangle text-dark"></i></div>

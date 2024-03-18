@@ -95,15 +95,22 @@ class UserController extends Controller
     }
 
     public function createdepartment(){
-        return view('createdepartment');
+        $users= Registration::where('designation','EMPLOYEE')->get();
+        $data=compact('users');
+        return view('createdepartment')->with($data);
     }
 
     public function employeeupdate(){
-        return view('employeeupdate');
+        $user = Registration::where('designation', 'EMPLOYEE')->get();
+        $data=compact('user');
+        
+        return view('employeeupdate')->with($data);
     }
 
     public function managerupdate(){
-        return view('managerupdate');
+        $user = Registration::where('designation', 'MANAGER')->get();
+        $data=compact('user');
+        return view('managerupdate')->with($data);
     }
 
     public function departmentupdate(){
