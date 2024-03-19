@@ -113,6 +113,34 @@ class UserController extends Controller
         return view('managerupdate')->with($data);
     }
 
+    
+    public function delete($id){
+        Registration::find($id)->delete();
+        return redirect()->back();
+
+    }
+
+  
+    public function viewemployee($id){
+        $user = Registration::find($id);
+        $data=compact('user');
+        return view('viewemployee')->with($data);
+    
+
+    }
+
+    public function viewmanager($id){
+        $user = Registration::find($id);
+        $data=compact('user');
+        return view('viewmanager')->with($data);
+    
+
+    }
+
+
+
+
+
     public function departmentupdate(){
         return view('departmentupdate');
     }
@@ -165,6 +193,9 @@ class UserController extends Controller
         return view('employeereport');
     }
 
+
+
 }
+
 
 

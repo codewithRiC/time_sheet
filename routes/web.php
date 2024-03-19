@@ -46,7 +46,10 @@ Route::get('projectreport', [UserController::class, 'projectreport'])->name('pro
 Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
 
 Route::post('/profileupdate/{id}', [UserController::class, 'profileupdate']);
-
+Route::get('/employeeupdate/delete/{id}',[UserController::class, 'delete']);
+Route::get('/managerpdate/delete/{id}',[UserController::class, 'delete']);
+Route::get('viewemployee/{id}', [UserController::class, 'viewemployee'])->name('viewemployee');
+Route::get('viewmanager/{id}', [UserController::class, 'viewmanager'])->name('viewmanager');
 
 
 Route::post('/register', [RegistrationController::class, 'register']);

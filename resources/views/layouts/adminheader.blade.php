@@ -89,7 +89,7 @@
                                 </a> --}}
                                 <a class="nav-link text-dark" href="{{ route('managerupdate') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear text-dark"></i></div>
-                                    View/Edit Manager
+                                    View Manager
     
                                 </a>
                             </nav>
@@ -108,7 +108,7 @@
                                 </a> --}}
                                 <a class="nav-link text-dark" href="{{ route('employeeupdate') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear text-dark"></i></div>
-                                    View/Edit Employee
+                                    View Employee
                                 </a>
                             </nav>
                         </div>

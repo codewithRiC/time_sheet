@@ -56,8 +56,8 @@
                                <td>{{ $u->details }}</td>
                                <td>
                                    
-                                   <button class="btn btn-primary">Edit</button>
-                                   <button class="btn btn-danger">Delete</button>
+                                  <a href="{{ route('viewemployee', ['id' => $u->id])}}"> <button class="btn btn-primary">View</button></a>
+                                   <a href="{{ url('/employeeupdate/delete/') }}/{{ $u->id }}"><button class="btn btn-danger">Delete</button></a>
                                </td>
                            </tr>
                            @endforeach

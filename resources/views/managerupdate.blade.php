@@ -55,8 +55,8 @@
                                     <td>{{ $u->details }}</td>
                                     <td>
                                    
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <a href="{{ route('viewmanager', ['id' => $u->id])}}"> <button class="btn btn-primary">View</button></a>
+                                   <a href="{{ url('/managerupdate/delete/') }}/{{ $u->id }}"><button class="btn btn-danger">Delete</button></a>
                                     </td>
                                 </tr>
                                 @endforeach
