@@ -10,6 +10,9 @@ class Registration extends Model
     use HasFactory;
     protected $table ="registration";
     protected $primaryKey ="id";
+    protected $fillable=[
+        'image'
+    ];
 
     public function setNameAttribute($value){
         $this->attributes['name'] = ucwords($value);

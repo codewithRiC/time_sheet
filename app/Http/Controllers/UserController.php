@@ -58,6 +58,23 @@ class UserController extends Controller
 
     public function profileupdate($id, Request $req){
         $data = Registration::find($id);
+
+        $req->validate(
+            [
+               
+                'image'=>'nullable|mimes:png,jpg,jpeg'
+            ]
+    
+        );
+
+        if($req->has('image')){
+            $file=$req->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $data->name.'.'.$extension;
+            $path= 'uploads/profile/';
+            $file->move($path,$filename);
+        }
+
    
         $data->name=$req['name'];
         $data->email=$req['email'];
@@ -69,6 +86,7 @@ class UserController extends Controller
         $data->designation=$req['designation'];
         $data->yoe=$req['yoe'];
         $data->details=$req['details'];
+        $data->image=$path.$filename;
         $data->save();
 
         if($data->designation=='ADMIN'){

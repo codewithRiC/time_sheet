@@ -19,8 +19,13 @@
             <div class="row">
                 <div class="col-md-12 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px"
-                            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        @if($user->image === null)
+                          <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        @else  
+                         <img class="rounded-circle mt-5" width="150px" src="{{ asset($user->image) }}" >
+                         
+                        
+                        @endif 
                         <span class="font-weight-bold"> <span class="text-black-50">
                                {{ $user->name }}
                             </span>
@@ -29,7 +34,7 @@
                     </div>
                 </div>
 
-                <form action="{{ url('/') }}/profileupdate/{{ session()->get('id') }}" method="post">
+                <form action="{{ url('/') }}/profileupdate/{{ session()->get('id') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-12 border-right">
                         <div class="p-2 py-3">
@@ -80,6 +85,11 @@
                                         type="text" class="form-control" name="details"
                                         placeholder="additional details" value="{{ $user->details }}">
                                 </div>
+
+                                <div class="col-md-12"><label class="labels">Upload Profile</label><input
+                                    type="file" class="form-control" name="image"
+                                    placeholder="Upload Profile" >
+                            </div>
 
 
 
