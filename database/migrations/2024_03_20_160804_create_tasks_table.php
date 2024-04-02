@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('TID');
             $table->string('TaskName',60);
             $table->string('TaskDescription',100);
-            $table->string('AssignedTo',50);
+           
             $table->date('TStartDate');
             $table->date('TEndDate');
             $table->string('Status',40);

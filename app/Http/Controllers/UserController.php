@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Registration;
+use App\Models\Project;
 
 class UserController extends Controller
 {
@@ -86,7 +87,9 @@ class UserController extends Controller
         $data->designation=$req['designation'];
         $data->yoe=$req['yoe'];
         $data->details=$req['details'];
+        if($req->has('image')){
         $data->image=$path.$filename;
+        }
         $data->save();
 
         if($data->designation=='ADMIN'){
@@ -171,19 +174,32 @@ class UserController extends Controller
         return view('planupdate');
     }
 
-    
     public function createproject(){
-        return view('createproject');
+        $users= Registration::where('designation','MANAGER')->get();
+        $data=compact('users');
+    
+        return view('createproject')->with($data);
+
     }
 
     
+   
+    
     public function createtasks(){
-        return view('createtasks');
+        $users= Project::all();
+        $data=compact('users');
+    
+        return view('createtasks')->with($data);
+       
     }
 
     
     public function projectupdate(){
-        return view('projectupdate');
+        $user = Project::all();
+        $data=compact('user');
+        
+        
+        return view('projectupdate')->with($data);
     }
 
     

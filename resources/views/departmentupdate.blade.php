@@ -22,39 +22,51 @@
                             <thead>
                                 <tr>
                                     <th>Sl No.</th>
-                                    <th>Name</th>
-                                    <th>Designation</th>
-                                    <th>Adress</th>
-                                    <th>Phone</th>
-                                    <th>Qualification</th>
-                                    <th>Year Of experience</th>
-                                    <th>Details</th>
-                                   
+                                    <th>Department ID</th>
+                                    <th>Department Code</th>
+                                    <th>Description</th>
+                                    <th>Head</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Action</th>
+        
                                 </tr>
                             </thead>
-                            
+        
                             <tbody>
-                                <tr>
-                                    <td>    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>  </td>
-                                </tr>
-                              
-                                
+                                @php
+                                    $sno = 1;
+                                @endphp
+        
+                                {{-- @foreach ($user as $u) --}}
+                                    <tr>
+                                        <td>{{ $sno++ }}</td>
+                                        <td> </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                       
+                                        <td>
+        
+                                            {{-- <a href="{{ route('viewemployee', ['id' => $u->id]) }}"> <button
+                                                    class="btn btn-primary">View</button></a>
+                                            <a href="{{ url('/employeeupdate/delete/') }}/{{ $u->id }}"><button
+                                                    class="btn btn-danger">Delete</button></a> --}}
+                                        </td>
+                                    </tr>
+                                {{-- @endforeach --}}
+        
+        
                             </tbody>
                         </table>
                     </div>
                 </div>
-    
-    </main>
-
-    </div>
-    </div>
-
+            </main>
+        
+        </div>
+        </div>
+        
     @include('layouts.footer')
 

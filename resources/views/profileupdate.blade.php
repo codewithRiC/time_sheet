@@ -86,10 +86,18 @@
                                         placeholder="additional details" value="{{ $user->details }}">
                                 </div>
 
-                                <div class="col-md-12"><label class="labels">Upload Profile</label><input
-                                    type="file" class="form-control" name="image"
-                                    placeholder="Upload Profile" >
-                            </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Upload Profile</label>
+                                    <input type="file" class="form-control" name="image" id="image" accept="image/*">
+                                    @if ($user->image)
+                                        <input type="hidden" name="previous_image" value="{{ $user->image }}">
+                                        <span>{{ $user->image }}</span> <!-- Display the filename -->
+                                    @else
+                                        <span>No file uploaded</span> <!-- Or display a message if no file is uploaded -->
+                                    @endif
+                                </div>
+                                
+                                
 
 
 

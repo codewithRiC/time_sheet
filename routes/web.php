@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TasksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +49,7 @@ Route::get('employeereport', [UserController::class, 'employeereport'])->name('e
 
 Route::post('/profileupdate/{id}', [UserController::class, 'profileupdate']);
 Route::get('/employeeupdate/delete/{id}',[UserController::class, 'delete']);
-Route::get('/managerpdate/delete/{id}',[UserController::class, 'delete']);
+Route::get('/managerupdate/delete/{id}',[UserController::class, 'delete']);
 Route::get('viewemployee/{id}', [UserController::class, 'viewemployee'])->name('viewemployee');
 Route::get('viewmanager/{id}', [UserController::class, 'viewmanager'])->name('viewmanager');
 
@@ -57,3 +59,10 @@ Route::post('/login', [RegistrationController::class, 'login']);
 Route::post('/forgetpassword', [RegistrationController::class, 'forgetpassword']);
 Route::post('/resetpassword', [RegistrationController::class, 'resetpassword']);
 
+Route::post('/createproject',[ProjectController::class, 'createproject']);
+Route::get('/projectupdate/delete/{id}',[ProjectController::class, 'delete']);
+Route::get('viewproject/{id}', [ProjectController::class, 'project'])->name('viewproject');
+
+Route::post('/viewproject/{id}', [ProjectController::class, 'viewproject']);
+
+Route::post('/createtasks',[TasksController::class, 'createtasks']);

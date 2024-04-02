@@ -1,9 +1,9 @@
 @push('title')
-    <title>Create Manager</title>
+    <title>View Tasks</title>
 @endpush
 
-@if (session()->get('designation')=="ADMIN")
-@include('layouts.adminheader')
+@if (session()->get('designation')=="MANAGER")
+@include('layouts.managerheader')
   
      
 @endif
@@ -85,3 +85,4 @@
     </div>
 
     @include('layouts.footer')
+

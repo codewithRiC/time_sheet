@@ -19,7 +19,7 @@
 
 <div id="layoutSidenav_content">
     <main>
-
+        <fieldset disabled>
         <div class="container rounded bg-white mt-5 mb-2 ms-4">
             <div class="row">
                 <div class="col-md-3 border-right">
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-
+        </fieldset>
     </main>
 
 </div>

@@ -36,15 +36,12 @@ class RegistrationController extends Controller
     $data->securityQuestion=$req['securityQuestion'];
     $data->securityAnswer=$req['securityAnswer'];
     $data->save();
-
-
    
-
-        
-      
     return redirect('login')->with('success','Successfully Registered');
         
     }
+
+
 
     public function login(Request $req)
     {
@@ -63,8 +60,6 @@ class RegistrationController extends Controller
     // $pass=md5($req->input('password'));
     //insert query
     $user=Registration::where('email',$req->input('email'))->where('designation',$req->input('designation'))->where('password',$req->password)->first();
-
-    
 
    if($user){
 
@@ -90,11 +85,7 @@ class RegistrationController extends Controller
    else{
      return redirect('login')->with('error','Wrong Email/ Password');
    }
-
-        
-      
-   
-        
+     
     }
 
 
