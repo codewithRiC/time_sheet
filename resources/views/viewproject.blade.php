@@ -17,22 +17,22 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="p-2 py-3">
+                    <div class="p-4 py-3">
                         <form action="{{ url('/') }}/viewproject/{{ $user->PID }}" method="post">
                             @csrf
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-centre p-3 "
-                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:30px;">Edit Project</h4>
+                                <h4 class="text-centre pt-2 "
+                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:20px;">Edit Project</h4>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels fs-5 fw-bold">Project Name</label><input
+                                <div class="col-md-6"><label class="labels  fw-bold">Project Name</label><input
                                         type="text" class="form-control" placeholder="Project Name"
                                         name="ProjectName" value="{{ $user->ProjectName }}"> <span class="text-danger">
                                         @error('ProjectName')
                                             {{ $message }}
                                         @enderror
                                     </span></div>
-                                <div class="col-md-6"><label class="labels fs-5 fw-bold">Project
+                                <div class="col-md-6"><label class="labels  fw-bold">Project
                                         Description</label><input type="text" class="form-control"
                                         placeholder="Project Description" name="ProjectDescription"
                                         value="{{ $user->ProjectDescription }}"> <span class="text-danger">
@@ -42,8 +42,8 @@
                                     </span></div>
 
                             </div>
-                            <div class="row mt-1">
-                                <div class="col-md-6 "><label class="labels fs-5 fw-bold">Start Date</label><input
+                            <div class="row mt-2">
+                                <div class="col-md-6 "><label class="labels  fw-bold">Start Date</label><input
                                         type="date" class="form-control" placeholder="start date" name="PStartDate"
                                         value="{{ $user->PStartDate }}">
                                     <span class="text-danger">
@@ -52,7 +52,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="col-md-6 "><label class="labels fs-5 fw-bold">Last Date</label><input
+                                <div class="col-md-6 "><label class="labels  fw-bold">Last Date</label><input
                                         type="date" class="form-control" placeholder="last date" name="PEndDate"
                                         value="{{ $user->PEndDate }}">
                                     <span class="text-danger">
@@ -64,8 +64,8 @@
 
 
 
-                                <div class="col-md-6 mt-1">
-                                    <label class="labels fs-5 fw-bold">Project manager</label>
+                                <div class="col-md-6 mt-2">
+                                    <label class="labels  fw-bold">Project manager</label>
                                     <select name="ProjectManager" class="form-control">
                                         <option selected disabled>Select project manager</option>
                                         @foreach ($users as $u)
@@ -83,22 +83,22 @@
                                     </span>
                                 </div>
 
-                                <div class="col-md-6 mt-1">
-                                    <label class="labels fs-5 fw-bold">Priority</label>
+                                <div class="col-md-6 mt-2">
+                                    <label class="labels  fw-bold">Priority</label>
                                     <select name="Priority" class="form-control">
                                         <option disabled selected>Select Priority</option>
-                                        <option value="HIGH" style="color: red"
+                                        <option value="HIGH" style="color: red!important"
                                             {{ $user->Priority == 'HIGH' ? 'selected' : '' }}>HIGH</option>
-                                        <option value="MEDIUM" style="color: rgb(45, 45, 231)"
+                                        <option value="MEDIUM" style="color: rgb(45, 45, 231)!important"
                                             {{ $user->Priority == 'MEDIUM' ? 'selected' : '' }}>MEDIUM</option>
-                                        <option value="LOW" style="color: rgb(75, 239, 75)"
+                                        <option value="LOW" style="color: rgb(75, 239, 75)!important"
                                             {{ $user->Priority == 'LOW' ? 'selected' : '' }}>LOW</option>
                                     </select>
                                 </div>
 
 
-                                <div class="col-md-6 mt-1">
-                                    <label class="labels fs-5 fw-bold">Status</label>
+                                <div class="col-md-6 mt-2">
+                                    <label class="labels  fw-bold">Status</label>
                                     <select name="Status" class="form-control">
                                         <option disabled>Status</option>
                                         <option value="Not Started"
@@ -115,19 +115,38 @@
                                 </div>
 
 
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Tags or
+                                <div class="col-md-6 mt-2"><label class="labels  fw-bold">Tags or
                                         Categories</label><input type="text" class="form-control"
                                         placeholder="Add Tags" name="Tags" value="{{ $user->Tags }}"></div>
-                                <div class="col-md-12 mt-1"><label
-                                        class="labels fs-5 fw-bold">Dependencies</label><input type="text"
+                                <div class="col-md-12 mt-2"><label
+                                        class="labels  fw-bold">Dependencies</label><input type="text"
                                         class="form-control" placeholder="Add Dependencies" name="Dependencies"
                                         value="{{ $user->Dependencies }}"></div>
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Admin Note</label><input
-                                        type="text" class="form-control" placeholder="Admin Note" name="AdminNote"
-                                        value="{{ $user->AdminNote }}"></div>
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Manager Note</label><input
-                                        type="text" class="form-control" placeholder="Manager Note"
-                                        name="ManagerNote" value="{{ $user->ManagerNote }}"></div>
+                                @if (session()->get('designation') == 'ADMIN')
+                                    <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin
+                                            Note</label><input type="text" class="form-control"
+                                            placeholder="Admin Note" name="AdminNote" value="{{ $user->AdminNote }}">
+                                    </div>
+                                    <fieldset disabled>
+                                    <div class="col-md-12 mt-2"><label class="labels  fw-bold">Manager
+                                            Note</label><input type="text" class="form-control"
+                                            placeholder="Manager Note" name="ManagerNote"
+                                            value="{{ $user->ManagerNote }}"></div>
+                                    </fieldset>       
+                                @elseif (session()->get('designation') == 'MANAGER')
+                                
+                                    <div class="col-md-12 mt-2"><label class="labels fw-bold">Manager
+                                            Note</label><input type="text" class="form-control"
+                                            placeholder="Manager Note" name="ManagerNote"
+                                            value="{{ $user->ManagerNote }}"></div>
+                                            <fieldset disabled>
+                                                <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin
+                                                        Note</label><input type="text" class="form-control"
+                                                        placeholder="Admin Note" name="AdminNote"
+                                                        value="{{ $user->AdminNote }}"></div>
+                                            </fieldset>         
+                                @endif
+
 
                             </div>
 

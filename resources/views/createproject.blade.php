@@ -18,12 +18,12 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <div class="p-2 py-3">
+                    <div class="p-4 py-3">
                         <form action="{{ url('/') }}/createproject" method="post">
                             @csrf
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-centre p-3 "
-                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:30px;">
+                                <h4 class="text-centre pt-2 "
+                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:20px;">
                                     ADD PROJECT</h4>
                             </div>
                             @if (session()->has('success'))
@@ -33,8 +33,8 @@
                             @endif
 
 
-                            <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels fs-5 fw-bold">Project Name</label><input
+                            <div class="row mt-1">
+                                <div class="col-md-6"><label class="labels  fw-bold">Project Name</label><input
                                         type="text" class="form-control" placeholder="Project Name"
                                         name="ProjectName" value="">
                                     <span class="text-danger">
@@ -43,7 +43,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="col-md-6"><label class="labels fs-5 fw-bold">Project
+                                <div class="col-md-6"><label class="labels  fw-bold">Project
                                         Description</label><input type="text" class="form-control"
                                         placeholder="Project Description" name="ProjectDescription" value="">
                                     <span class="text-danger">
@@ -54,8 +54,8 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-1">
-                                <div class="col-md-6 "><label class="labels fs-5 fw-bold">Start Date</label><input
+                            <div class="row mt-2">
+                                <div class="col-md-6 "><label class="labels  fw-bold">Start Date</label><input
                                         type="date" class="form-control" placeholder="start date" name="PStartDate"
                                         value="">
                                     <span class="text-danger">
@@ -64,7 +64,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <div class="col-md-6 "><label class="labels fs-5 fw-bold">Last Date</label><input
+                                <div class="col-md-6 "><label class="labels  fw-bold">Last Date</label><input
                                         type="date" class="form-control" placeholder="last date" name="PEndDate"
                                         value="">
                                     <span class="text-danger">
@@ -74,7 +74,7 @@
                                     </span>
                                 </div>
 
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Project manager</label>
+                                <div class="col-md-6 mt-2"><label class="labels  fw-bold">Project manager</label>
                                     <select name="ProjectManager" class="form-control">
                                         <option selected>Select project manager</option>
                                         @foreach ($users as $user)
@@ -91,7 +91,7 @@
                                     </span>
                                 </div>
 
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Priority</label>
+                                <div class="col-md-6 mt-2"><label class="labels  fw-bold">Priority</label>
                                     <select name="Priority" class="form-control">
                                         <option selected>Priority</option>
                                         <option style="color:red">HIGH</option>
@@ -105,11 +105,14 @@
                                     </span>
                                 </div>
 
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Status</label>
+                                <div class="col-md-6 mt-2"><label class="labels  fw-bold">Status</label>
                                     <select name="Status" class="form-control">
                                         <option selected>Status</option>
                                         <option>Not Started</option>
                                         <option>In Progress</option>
+                                        <option>50% Completed</option>
+                                        <option>75% Completed</option>
+                                        <option>90% Completed</option>
                                         <option>Completed</option>
                                         <option>On Hold</option>
                                         <option>Cancelled</option>
@@ -121,17 +124,17 @@
                                     </span>
                                 </div>
 
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Tags or
+                                <div class="col-md-6 mt-2"><label class="labels  fw-bold">Tags or
                                         Categories</label><input type="text" class="form-control"
                                         placeholder="Add Tags" name="Tags" value=""></div>
-                                <div class="col-md-12 mt-1"><label
-                                        class="labels fs-5 fw-bold">Dependencies</label><input type="text"
+                                <div class="col-md-12 mt-2"><label
+                                        class="labels  fw-bold">Dependencies</label><input type="text"
                                         class="form-control" placeholder="Add Dependencies" name="Dependencies"
                                         value=""></div>
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Admin Note</label><input
+                                <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin Note</label><input
                                         type="text" class="form-control" placeholder="Admin Note" name="AdminNote"
                                         value=""></div>
-                                <div class="col-md-6 mt-1"><label class="labels fs-5 fw-bold">Manager Note</label><input
+                                <div class="col-md-12 mt-2"><label class="labels  fw-bold">Manager Note</label><input
                                         type="text" class="form-control" placeholder="Manager Note"
                                         name="ManagerNote" value=""></div>
 
