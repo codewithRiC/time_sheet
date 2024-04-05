@@ -62,11 +62,14 @@
                                 <td>{{ $u->yoe }}</td>
                                 <td>{{ $u->details }}</td>
                                 <td>
-
-                                    <a href="{{ route('viewemployee', ['id' => $u->id]) }}"> <button
-                                            class="btn btn-primary">View</button></a>
-                                    <a href="{{ url('/employeeupdate/delete/') }}/{{ $u->id }}"><button
-                                            class="btn btn-danger">Delete</button></a>
+                                    <div style="display: flex ">
+                                        <a href="{{ route('viewemployee', ['id' => $u->id]) }}"> <button
+                                                class="btn btn-secondary m-1"><i class="fa-solid fa-eye"></i></button></a>
+                                       
+                                        <a href="{{ url('/employeeupdate/delete/') }}/{{ $u->id }}"><button
+                                                class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></button></a>
+                                        </div>     
+                                   
                                 </td>
                             </tr>
                         @endforeach

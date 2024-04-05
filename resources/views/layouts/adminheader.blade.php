@@ -102,10 +102,10 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                {{-- <a class="nav-link text-dark" href="{{ route('createemployee') }}">
-                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus text-dark"></i></div>
-                                    Create Employee
-                                </a> --}}
+                                <a class="nav-link text-dark" href="{{ route('departmentupdate') }}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-wrench text-dark"></i></div>
+                                    View/Edit Department
+                                </a>
                                 <a class="nav-link text-dark" href="{{ route('employeeupdate') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-gear text-dark"></i></div>
                                     View Employee

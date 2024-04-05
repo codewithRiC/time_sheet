@@ -1,5 +1,5 @@
 @push('title')
-    <title>View Project</title>
+    <title>Edit Project</title>
 @endpush
 
 @if (session()->get('designation') == 'ADMIN')
@@ -12,17 +12,17 @@
 
 <div id="layoutSidenav_content">
     <main>
-        <fieldset disabled>
         <div class="container rounded bg-white  p-1">
 
             <div class="row">
 
                 <div class="col-md-12">
                     <div class="p-4 py-3">
-                       
+                        <form action="{{ url('/') }}/editproject/{{ $user->PID }}" method="post">
+                            @csrf
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-centre pt-2 "
-                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:20px;">View Project</h4>
+                                    style="color:rgb(14, 14, 129);font-weight:700;font-size:20px;">Edit Project</h4>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels  fw-bold">Project Name</label><input
@@ -105,6 +105,15 @@
                                             {{ $user->Status == 'Not Started' ? 'selected' : '' }}>Not Started</option>
                                         <option value="In Progress"
                                             {{ $user->Status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                                        <option value="50% Completed"
+                                            {{ $user->Status == '50% Completed' ? 'selected' : '' }}>
+                                            50% Completed</option>
+                                        <option value="75% Completed"
+                                            {{ $user->Status == '75% Completed' ? 'selected' : '' }}>
+                                            75% Completed</option>
+                                        <option value="90% Completed"
+                                            {{ $user->Status == '90% Completed' ? 'selected' : '' }}>
+                                            90% Completed</option>
                                         <option value="Completed" {{ $user->Status == 'Completed' ? 'selected' : '' }}>
                                             Completed</option>
                                         <option value="On Hold" {{ $user->Status == 'On Hold' ? 'selected' : '' }}>On
@@ -118,49 +127,46 @@
                                 <div class="col-md-6 mt-2"><label class="labels  fw-bold">Tags or
                                         Categories</label><input type="text" class="form-control"
                                         placeholder="Add Tags" name="Tags" value="{{ $user->Tags }}"></div>
-                                <div class="col-md-12 mt-2"><label
-                                        class="labels  fw-bold">Dependencies</label><input type="text"
-                                        class="form-control" placeholder="Add Dependencies" name="Dependencies"
-                                        value="{{ $user->Dependencies }}"></div>
+                                <div class="col-md-12 mt-2"><label class="labels  fw-bold">Dependencies</label><input
+                                        type="text" class="form-control" placeholder="Add Dependencies"
+                                        name="Dependencies" value="{{ $user->Dependencies }}"></div>
                                 @if (session()->get('designation') == 'ADMIN')
                                     <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin
                                             Note</label><input type="text" class="form-control"
                                             placeholder="Admin Note" name="AdminNote" value="{{ $user->AdminNote }}">
                                     </div>
                                     <fieldset disabled>
-                                    <div class="col-md-12 mt-2"><label class="labels  fw-bold">Manager
-                                            Note</label><input type="text" class="form-control"
-                                            placeholder="Manager Note" name="ManagerNote"
-                                            value="{{ $user->ManagerNote }}"></div>
-                                    </fieldset>       
+                                        <div class="col-md-12 mt-2"><label class="labels  fw-bold">Manager
+                                                Note</label><input type="text" class="form-control"
+                                                placeholder="Manager Note" name="ManagerNote"
+                                                value="{{ $user->ManagerNote }}"></div>
+                                    </fieldset>
                                 @elseif (session()->get('designation') == 'MANAGER')
-                                
                                     <div class="col-md-12 mt-2"><label class="labels fw-bold">Manager
                                             Note</label><input type="text" class="form-control"
                                             placeholder="Manager Note" name="ManagerNote"
                                             value="{{ $user->ManagerNote }}"></div>
-                                            <fieldset disabled>
-                                                <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin
-                                                        Note</label><input type="text" class="form-control"
-                                                        placeholder="Admin Note" name="AdminNote"
-                                                        value="{{ $user->AdminNote }}"></div>
-                                            </fieldset>         
+                                    <fieldset disabled>
+                                        <div class="col-md-12 mt-2"><label class="labels  fw-bold">Admin
+                                                Note</label><input type="text" class="form-control"
+                                                placeholder="Admin Note" name="AdminNote"
+                                                value="{{ $user->AdminNote }}"></div>
+                                    </fieldset>
                                 @endif
 
 
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <a href="{{ route('projectupdate') }}"><button
-                                        class="btn btn-primary mt-5 ">Back</button></a>
-                            </div>
 
+                            <div class="mt-4 text-center"><button class="btn btn-primary profile-button"
+                                    type="submit">Save Project</button></div>
+
+                        </form>
                     </div>
                 </div>
 
             </div>
 
         </div>
-        </fieldset>
 
     </main>
 

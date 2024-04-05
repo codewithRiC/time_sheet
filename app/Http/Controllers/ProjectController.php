@@ -73,7 +73,19 @@ class ProjectController extends Controller
 
     }
 
-    public function viewproject($id, Request $req){
+    
+    public function project2($id){
+        $users= Registration::where('designation','MANAGER')->get();
+        
+    
+       
+        $user = Project::find($id);
+        $data=compact('user','users');
+        return view('editproject')->with($data);
+
+    }
+
+    public function editproject($id, Request $req){
         $req->validate([
             'ProjectName'=> 'required',
             'ProjectDescription'=>'required',

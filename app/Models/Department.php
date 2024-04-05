@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+    protected $table ="department";
+    protected $primaryKey ="DID";
+
+    protected $casts = [
+        'team_members' => 'array',
+    ];
 }

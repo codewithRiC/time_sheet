@@ -65,8 +65,9 @@
                                 <td>{{ 'PID-' }}-{{ $u->PID }}</td>
                                 <td>{{ $u->ProjectName }}</td>
                                 <td>{{ $u->ProjectManager }}</td>
-                                <td>{{ $u->PStartDate }}</td>
-                                <td>{{ $u->PEndDate }}</td>
+                                <td>{{ date_format(date_create($u->PStartDate), 'd-M-Y') }}</td>
+                                <td>{{ date_format(date_create($u->PEndDate), 'd-M-Y') }}</td>
+
                                 @php
                                      $startDate = \Carbon\Carbon::now();
                                     $endDate = \Carbon\Carbon::parse($u->PEndDate);
@@ -108,7 +109,7 @@
                                     <div style="display: flex ">
                                     <a href="{{ route('viewproject', ['id' => $u->PID]) }}"> <button
                                             class="btn btn-secondary m-1"><i class="fa-solid fa-eye"></i></button></a>
-                                     <a href="{{ route('viewproject', ['id' => $u->PID]) }}"> <button
+                                     <a href="{{ route('editproject', ['id' => $u->PID]) }}"> <button
                                                 class="btn btn-primary m-1"><i class="fa-solid fa-pen"></i></button></a>
                                     <a href="{{ url('/projectupdate/delete/') }}/{{ $u->PID }}"><button
                                             class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></button></a>

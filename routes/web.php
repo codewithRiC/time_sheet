@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,7 +63,20 @@ Route::post('/resetpassword', [RegistrationController::class, 'resetpassword']);
 Route::post('/createproject',[ProjectController::class, 'createproject']);
 Route::get('/projectupdate/delete/{id}',[ProjectController::class, 'delete']);
 Route::get('viewproject/{id}', [ProjectController::class, 'project'])->name('viewproject');
-
-Route::post('/viewproject/{id}', [ProjectController::class, 'viewproject']);
+Route::get('editproject/{id}',[ProjectController::class,'project2'])->name('editproject');
+Route::post('/editproject/{id}', [ProjectController::class, 'editproject']);
 
 Route::post('/createtasks',[TasksController::class, 'createtasks']);
+Route::get('/tasksupdate/delete/{id}',[TasksController::class, 'delete']);
+Route::get('viewtasks/{id}', [TasksController::class, 'task'])->name('viewtasks');
+Route::get('edittasks/{id}',[TasksController::class,'task2'])->name('edittasks');
+Route::post('/edittasks/{id}', [TasksController::class, 'edittasks']);
+
+
+
+Route::post('/createdepartment',[DepartmentController::class, 'createdepartment']);
+Route::get('/departmentupdate/delete/{id}',[DepartmentController::class, 'delete']);
+Route::get('viewdepartment/{id}', [DepartmentController::class, 'department'])->name('viewdepartment');
+Route::get('editdepartment/{id}',[DepartmentController::class,'department2'])->name('editdepartment');
+Route::post('/editdepartment/{id}', [DepartmentController::class, 'editdepartment']);
+

@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Project;
+use App\Models\Department;
+use App\Models\Tasks;
 
 class UserController extends Controller
 {
@@ -163,7 +165,11 @@ class UserController extends Controller
 
 
     public function departmentupdate(){
-        return view('departmentupdate');
+        $user = Department::all();
+        $data=compact('user');
+        
+      
+        return view('departmentupdate')->with($data);
     }
 
     public function createplan(){
@@ -204,7 +210,11 @@ class UserController extends Controller
 
     
     public function tasksupdate(){
-        return view('tasksupdate');
+        $user = Tasks::all();
+        $data=compact('user');
+        
+      
+        return view('tasksupdate')->with($data);
     }
 
     public function assigntasks(){
@@ -227,7 +237,7 @@ class UserController extends Controller
         return view('employeereport');
     }
 
-
+  
 
 }
 

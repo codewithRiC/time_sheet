@@ -60,11 +60,15 @@
                                 <td>{{ $u->yoe }}</td>
                                 <td>{{ $u->details }}</td>
                                 <td>
+                                    <div style="display: flex ">
+                                        <a href="{{ route('viewmanager', ['id' => $u->id]) }}"> <button
+                                                class="btn btn-secondary m-1"><i class="fa-solid fa-eye"></i></button></a>
+                                       
+                                        <a href="{{ url('/managerupdate/delete/') }}/{{ $u->id }}"><button
+                                                class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></button></a>
+                                        </div>    
 
-                                    <a href="{{ route('viewmanager', ['id' => $u->id]) }}"> <button
-                                            class="btn btn-primary">View</button></a>
-                                    <a href="{{ url('/managerupdate/delete/') }}/{{ $u->id }}"><button
-                                            class="btn btn-danger">Delete</button></a>
+                                   
                                 </td>
                             </tr>
                         @endforeach
