@@ -14,65 +14,88 @@
             <main>
                 <div class="container rounded bg-white  p-1">
                     <div class="row">
-                        <div class="col-md-3 border-right">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5" width="150px"
-                                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                                <span class="font-weight-bold"> <span class="text-black-50">
-                                    @if(session()->has('name'))
-            
-                                    {{ session()->get('name') }}
-            
-                                    @endif</span>
-                                
-                                <span> </span>
-                            </div>
-                        </div>
-                        <div class="col-md-5 border-right">
+                        <div class="col-md-12">
                             <div class="p-2 py-3">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="text-right">Profile Update</h4>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-12"><label class="labels">Name</label><input type="text"
-                                            class="form-control" placeholder="first name" value=""></div>
+                                <form action="{{ url('/') }}/assigntasks" method="post">
+                                    @csrf
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-centre  "
+                                            style="color:rgb(14, 14, 129);font-weight:700;font-size:20px;">
+                                            assign Tasks</h4>
+                                    </div>
+                                    @if (session()->has('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ session()->get('success') }}</p>
+                                    </div>
+                                    @endif
+        
+                                    
+                                    <div class="row mt-1">
+        
+        
+                                        <div class="col-md-12 mt-1"> <label class="labels  fw-bold">Task name</label>
+                                            <select name="TID" class="form-control">
+                                                <option selected disabled>Select task name</option>
+                                                <option selected>Select project manager</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->name }}">{{ $user->name }} -
+                                                        {{ $user->details }} -
+                                                        {{ $user->yoe }} years</option>
+                                                @endforeach
+        
+                                            </select>
+                                            <span class="text-danger">
+                                                @error('DepartmentHead')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span></div>
+        
+                                        <div class="form-group mt-2">
+                                            <label class="labels fw-bold" for="PID[]">Team Members</label>
+                                            <div>
+                                                <select name="PID[]" class="form-control" multiple id="PID_select">
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years</option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                              
+                                                
+                                                <span class="text-danger">
+                                                    @error('PID')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                        </div>
+        
+        
+        
+                                    </div>
 
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input
-                                            type="text" class="form-control" placeholder="enter phone number"
-                                            value=""></div>
-                                    <div class="col-md-12"><label class="labels">Address</label><input type="text"
-                                            class="form-control" placeholder="enter address line 1" value=""></div>
-
-                                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text"
-                                            class="form-control" placeholder="enter address line 2" value=""></div>
-                                    <div class="col-md-12"><label class="labels">State</label><input type="text"
-                                            class="form-control" placeholder="enter address line 2" value=""></div>
-
-                                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
-                                            class="form-control" placeholder="enter email id" value=""></div>
-                                    <div class="col-md-12"><label class="labels">Education</label><input type="text"
-                                            class="form-control" placeholder="education" value=""></div>
-                                </div>
-
-                                <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                                        type="submit">Save Profile</button></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-2 py-3">
-                                <div class="col-md-12"><label class="labels">Designation </label><input
-                                    type="text" class="form-control" placeholder="Designation" value="">
-                                </div> <br>
-
-
-                                <div class="col-md-12"><label class="labels">Years of Experience </label><input
-                                        type="text" class="form-control" placeholder="experience" value="">
-                                </div> <br>
-                                <div class="col-md-12"><label class="labels">Additional Details</label><input
-                                        type="text" class="form-control" placeholder="additional details"
-                                        value=""></div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels  fw-bold">Start Date</label><input
+                                                type="date" class="form-control" placeholder="Start Date" name="StartDate"
+                                                value=""> <span class="text-danger">
+                                                    @error('StartDate')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span></div>
+                                        <div class="col-md-12"><label class="labels fw-bold">Remark</label><input
+                                                type="text" class="form-control" placeholder="Remark"
+                                                name="Remark" value=""> <span class="text-danger">
+                                                    @error('DepartmentName')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span></div>
+                                       
+        
+                                    </div>
+        
+                                    <div class="mt-4 text-center"><button class="btn btn-primary profile-button"
+                                            type="submit">Save
+                                        </button></div>
+                                </form>
                             </div>
                         </div>
                     </div>

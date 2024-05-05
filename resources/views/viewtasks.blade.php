@@ -53,10 +53,10 @@
                                         value="{{ $users->ProjectName }}"> --}}
                                     <select name="PID" class="form-control">
                                         {{-- <option selected>Select the Project</option> --}}
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->PID }}">{{ $user->PID }} -
-                                                {{ $user->ProjectName }} -
-                                                {{ $user->Priority }} </option>
+                                        @foreach ($users as $u)
+                                            <option value="{{ $u->PID }}">{{ $u->PID }} -
+                                                {{ $u->ProjectName }} -
+                                                {{ $u->Priority }} </option>
                                         @endforeach
 
                                     </select>

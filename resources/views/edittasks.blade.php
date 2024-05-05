@@ -47,21 +47,13 @@
                                 <div class="row mt-2">
                                     <div class="col-md-12 "><label class="labels fw-bold  ">Project name</label>
                                         <select name="PID" class="form-control">
-                                            <option selected disabled>Select Project Name..</option>
-                                            @foreach ($new as $registration)
-                                                <option value="{{ $registration->PID }}"
-                                                    {{ $registration->PID == old('PID', $user->PID) ? 'selected' : '' }}>
-                                                    {{ $registration->name }} - {{ $registration->details }} - {{ $registration->yoe }} years
-                                                </option>
+                                            {{-- <option selected>Select the Project</option> --}}
+                                            @foreach ($users as $u)
+                                                <option value="{{ $u->PID }}">{{ $u->PID }} -
+                                                    {{ $u->ProjectName }} -
+                                                    {{ $u->Priority }} </option>
                                             @endforeach
-                                        
-                                            @foreach ($users as $registration)
-                                                @if ($registration->PID !== $user->PID) <!-- Exclude the current project -->
-                                                    <option value="{{ $registration->PID }}">
-                                                        {{ $registration->name }} - {{ $registration->details }} - {{ $registration->yoe }} years
-                                                    </option>
-                                                @endif
-                                            @endforeach
+    
                                         </select>
                                         
                                     

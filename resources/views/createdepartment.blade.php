@@ -8,6 +8,7 @@
 
 
 
+
 <div id="layoutSidenav_content">
     <main>
 
@@ -74,18 +75,16 @@
                                     </span></div>
 
                                 <div class="form-group mt-2">
-                                    <label class="labels fw-bold" for="team_members">Team Members</label>
+                                    <label class="labels fw-bold" for="team_members[]">Team Members</label>
                                     <div>
-                                        @foreach ($users as $user)
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="team_members[]"
-                                                    id="user_{{ $user->id }}" value="{{ $user->id }}">
-                                                <label class="form-check-label" for="user_{{ $user->id }}">
-                                                    {{ $user->name }} - {{ $user->details }} - {{ $user->yoe }}
-                                                    years
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                        <select name="team_members[]" class="form-control" multiple id="team_members_select">
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years</option>
+                                            @endforeach
+                                        </select>
+                                        
+                                      
+                                        
                                         <span class="text-danger">
                                             @error('team_members')
                                                 {{ $message }}
@@ -112,6 +111,8 @@
 
 </div>
 </div>
+
+
 
 
 
