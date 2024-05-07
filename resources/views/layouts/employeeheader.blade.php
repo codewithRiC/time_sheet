@@ -112,7 +112,7 @@
                     </a>
                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                           <a class="nav-link text-dark" href="{{ route('assigntasksview') }}">
+                           <a class="nav-link text-dark" href="{{ route('assigntasksview', ['id' => session()->get('id')]) }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-eye text-dark"></i></div>
                                 View Assigned Tasks
                             </a>
@@ -123,10 +123,10 @@
                             </a>
                            
 
-                            <a class="nav-link text-dark" href="{{ route('tasksupdate') }}">
+                            {{-- <a class="nav-link text-dark" href="{{ route('tasksupdate') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up text-dark"></i></div>
                                 Updating Tasks
-                            </a>
+                            </a> --}}
                             
                             
                         </nav>

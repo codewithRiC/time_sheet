@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tasks;
 use App\Models\Registration;
 use App\Models\Project;
+use App\Models\AssignTask;
 
 class TasksController extends Controller
 {
@@ -135,8 +136,8 @@ class TasksController extends Controller
        
 
  
-
-        return redirect('tasksupdate');
+  
+        return redirect()->back();
 
        
     }

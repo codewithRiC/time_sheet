@@ -38,7 +38,8 @@
                                     </span></div>
                                 <div class="col-md-6"><label class="labels fw-bold ">Task Description</label><input
                                         type="text" class="form-control" placeholder="Task Description"
-                                        name="TaskDescription" value="{{ $user->TaskDescription }}"> <span class="text-danger">
+                                        name="TaskDescription" value="{{ $user->TaskDescription }}"> <span
+                                        class="text-danger">
                                         @error('TaskDescription')
                                             {{ $message }}
                                         @enderror
@@ -83,8 +84,7 @@
 
 
                                 <div class="col-md-6 mt-2"><label class="labels  fw-bold">Priority</label>
-                                    <input
-                                        type="text" class="form-control" placeholder="Priority" name="Priority"
+                                    <input type="text" class="form-control" placeholder="Priority" name="Priority"
                                         value="{{ $user->Priority }}">
                                     {{-- <select name="Priority" class="form-control">
                                         <option selected>Priority</option>
@@ -92,15 +92,14 @@
                                         <option style="color:rgb(45, 45, 231)">MEDIUM</option>
                                         <option style="color:rgb(75, 239, 75)">LOW</option>
                                     </select> <span class="text-danger"> --}}
-                                        @error('Priority')
-                                            {{ $message }}
-                                        @enderror
+                                    @error('Priority')
+                                        {{ $message }}
+                                    @enderror
                                     </span>
                                 </div>
 
                                 <div class="col-md-6 mt-2"><label class="labels  fw-bold">Status</label>
-                                    <input
-                                        type="text" class="form-control" placeholder="Status" name="Status"
+                                    <input type="text" class="form-control" placeholder="Status" name="Status"
                                         value="{{ $user->Status }}">
                                     {{-- <select name="Status" class="form-control">
                                         <option selected>Status</option>
@@ -117,15 +116,16 @@
 
                                 <div class="col-md-6 mt-2"><label class="labels  fw-bold">Progress</label><input
                                         type="text" class="form-control" placeholder="Mention the progress"
-                                        name="Progress" value="{{ $user->Progress }}"> 
-                                     </div>
+                                        name="Progress" value="{{ $user->Progress }}">
+                                </div>
                                 <div class="col-md-6 mt-2"><label class="labels  fw-bold">Dependencies</label><input
                                         type="text" class="form-control" placeholder="Add Dependencies"
                                         name="Dependencies" value="{{ $user->Dependencies }}"> </div>
 
                                 <div class="col-md-12 mt-2"><label class="labels  fw-bold">Manager
                                         Note</label><input type="text" class="form-control"
-                                        placeholder="Manager Note" name="ManagerNote" value="{{ $user->ManagerNote }}"></div>
+                                        placeholder="Manager Note" name="ManagerNote" value="{{ $user->ManagerNote }}">
+                                </div>
                                 <div class="col-md-12 mt-2"><label class="labels  fw-bold">Employee
                                         Note</label><input type="text" class="form-control" placeholder="Admin Note"
                                         name="EmployeeNote" value="{{ $user->EmployeeNote }}"></div>
@@ -133,8 +133,18 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
+
+                                @if (session()->get('designation') == 'ADMIN')
                                 <a href="{{ route('tasksupdate') }}"><button
-                                        class="btn btn-primary mt-5 ">Back</button></a>
+                                    class="btn btn-primary mt-5 ">Back</button></a>
+                                @elseif (session()->get('designation') == 'MANAGER')
+                                <a href="{{ route('tasksupdate') }}"><button
+                                    class="btn btn-primary mt-5 ">Back</button></a>
+                                @elseif (session()->get('designation') == 'EMPLOYEE')
+                                <a href="{{ route('assigntasksview', ['id' => session()->get('id')]) }}"><button
+                                    class="btn btn-primary mt-5 ">Back</button></a>
+                                @endif
+                               
                             </div>
 
                         </fieldset>

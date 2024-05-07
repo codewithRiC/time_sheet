@@ -8,6 +8,7 @@ use App\Models\Registration;
 use App\Models\Project;
 use App\Models\Department;
 use App\Models\Tasks;
+use App\Models\AssignTask;
 
 class UserController extends Controller
 {
@@ -218,14 +219,49 @@ class UserController extends Controller
     }
 
     public function assigntasks(){
+
+        $userIds = Registration::pluck('id');
+      
+// Initialize an array to store the task counts for each user
+$userTaskCounts = [];
+
+// Loop through each user ID (UID) to count tasks for each user
+foreach ($userIds as $userId) {
+   print_r($userId);
+    // Find TIDs for the current user by comparing $userId with the IDs present in the team_members array
+    $tids = AssignTask::whereJsonContains('team_members', $userId)->pluck('TID');
+    
+    
+    print_r($tids);
+   
+    // Count the number of tasks where TID matches the $tids array
+   
+        $taskCount = Tasks::whereIn('TID', $tids)->count();
+        // echo "User ID: $userId, Task Count: $taskCount\n";
+
+    // Store the task count for the current user in the array
+    $userTaskCounts[$userId] = $taskCount;
+  
+
+}
+
+exit;
+
         $users= Registration::where('designation','EMPLOYEE')->get();
         $task= Tasks::all();
-        $data=compact('users','task');
+        $data=compact('users','task','userTaskCounts');
+
         return view('assigntasks')->with($data);
     }
     
-    public function assigntasksview(){
-        return view('assigntasksview');
+    public function assigntasksview($id){
+      
+        $tids = AssignTask::whereJsonContains('team_members', $id)->pluck('TID');
+
+        $user = Tasks::whereIn('TID', $tids)->get();
+        
+        $data=compact('user');
+        return view('assigntasksview')->with($data);
     }
 
     public function addtimeslot(){

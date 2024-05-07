@@ -29,6 +29,8 @@
                                     </div>
                                     @endif
         
+                                  
+                                   
                                     
                                     <div class="row mt-1">
         
@@ -52,11 +54,26 @@
                                         <div class="form-group mt-2">
                                             <label class="labels fw-bold" for="team_members[]">Team Members</label>
                                             <div>
-                                                <select name="team_members[]" class="form-control" multiple id="team_members_select">
+                                                {{-- <select name="team_members[]" class="form-control" multiple id="team_members_select">
                                                     @foreach ($users as $user)
                                                         <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years</option>
                                                     @endforeach
                                                 </select>
+                                                 --}}
+
+                                                 <select name="team_members[]" class="form-control" multiple id="team_members_select">
+                                                    @foreach ($users as $user)
+
+                                
+                                                        {{-- Fetch the task count for the current user --}}
+                                                        {{-- @php
+                                                            $taskCount = isset($userTaskCounts[$user->id]) ? $userTaskCounts[$user->id] : 0; // Default to 0 if task count not available
+                                                        @endphp --}}
+                                                        {{-- Include task count as a data attribute --}}
+                                                        <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years ({{ $userTaskCounts[$user->id] }} tasks)</option>
+                                                    @endforeach
+                                                </select>
+                                                
                                                 
                                               
                                                 

@@ -6,8 +6,7 @@
 @include('layouts.adminheader')
 @elseif (session()->get('designation')=="MANAGER")
 @include('layouts.managerheader')  
-@elseif (session()->get('designation')=="EMPLOYEE")
-@include('layouts.employeeheader')   
+
      
 @endif
 

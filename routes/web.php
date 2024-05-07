@@ -45,7 +45,7 @@ Route::get('createtasks', [UserController::class, 'createtasks'])->name('createt
 Route::get('projectupdate', [UserController::class, 'projectupdate'])->name('projectupdate');
 Route::get('tasksupdate', [UserController::class, 'tasksupdate'])->name('tasksupdate');
 Route::get('assigntasks', [UserController::class, 'assigntasks'])->name('assigntasks');
-Route::get('assigntasksview', [UserController::class, 'assigntasksview'])->name('assigntasksview');
+Route::get('assigntasksview/{id}', [UserController::class, 'assigntasksview'])->name('assigntasksview');
 Route::get('addtimeslot', [UserController::class, 'addtimeslot'])->name('addtimeslot');
 Route::get('projectreport', [UserController::class, 'projectreport'])->name('projectreport');
 Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
