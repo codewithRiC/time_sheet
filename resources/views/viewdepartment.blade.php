@@ -69,12 +69,11 @@
                                     <div class="form-group mt-2">
                                         <label class="labels fw-bold" for="team_members">Team Members</label>
                                         <div>
-                                            @php
-                                                $s=1;
-                                            @endphp
-                                            @foreach ($users as $u)
-                                             {{ $s++ }}-{{ $u->name }}-{{ $u->details }}-{{ $u->yoe }}<br>
-                                            @endforeach
+                                            <ul>
+                                                @foreach ($users as $user)
+                                                    <li>{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years</li>
+                                                @endforeach
+                                            </ul>
                                             <span class="text-danger">
                                                 @error('team_members')
                                                     {{ $message }}

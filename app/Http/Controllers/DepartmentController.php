@@ -23,8 +23,8 @@ class DepartmentController extends Controller
             'DepartmentName.required' => 'The Department name is required.'
             ]
     );
-        print_r($validatedData['team_members']);
-        exit;
+        // print_r($validatedData['team_members']);
+        // exit;
         // Create a new department instance
         $department = new Department();
         $department->Code = $validatedData['Code'];

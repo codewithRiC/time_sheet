@@ -20,4 +20,6 @@
         $('#team_members_select').select2();
     });
 </script>
+
+</script>
 </html>

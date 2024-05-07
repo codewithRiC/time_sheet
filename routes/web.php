@@ -5,7 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\AssignController;
 use App\Http\Controllers\DepartmentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,3 +82,5 @@ Route::get('viewdepartment/{id}', [DepartmentController::class, 'department'])->
 Route::get('editdepartment/{id}',[DepartmentController::class,'department2'])->name('editdepartment');
 Route::post('/editdepartment/{id}', [DepartmentController::class, 'editdepartment']);
 
+
+Route::post('/assigntasks',[AssignController::class, 'assigntasks']);

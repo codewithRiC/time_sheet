@@ -218,7 +218,10 @@ class UserController extends Controller
     }
 
     public function assigntasks(){
-        return view('assigntasks');
+        $users= Registration::where('designation','EMPLOYEE')->get();
+        $task= Tasks::all();
+        $data=compact('users','task');
+        return view('assigntasks')->with($data);
     }
     
     public function assigntasksview(){

@@ -5,47 +5,51 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tasks;
 use App\Models\Registration;
+use App\Models\AssignTask;
 
 class AssignController extends Controller
 {
-    public function assign(Request $request)
+    public function assigntasks(Request $request)
     {
-        // Validate incoming request data
-    //     $validatedData = $request->validate([
-    //         'Code' => 'required|string',
-    //         'DepartmentName' => 'required|string',
-    //         'Description' => 'nullable|string',
-    //         'DepartmentHead' => 'nullable|string',
-    //         'team_members' => 'nullable|array',
-    //     ],
-    //     [
-    //         'Code.required' => 'The Code is required.',
-    //         'DepartmentName.required' => 'The Department name is required.'
-    //         ]
-    // );
-
+     
+        $validatedData = $request->validate([
+            'team_members' => 'nullable|array',
+            'TID' => 'required|string',
+            'StartDate' => 'required|date',
+            'Remark' => 'nullable|string',
+           
+        ],
+        [
+      
+            'StartDate.required' => 'The Start Date is required.',
+            'TID.required' => 'The TID is required.'
+            ]
+    );
+       
         // Create a new department instance
-        $department = new Department();
-        $department->Code = $validatedData['Code'];
-        $department->DepartmentName = $validatedData['DepartmentName'];
-        $department->Description = $validatedData['Description'];
-        $department->DepartmentHead = $validatedData['DepartmentHead'];
-        $department->team_members = $validatedData['team_members'];
+        $d = new AssignTask();
+        $d->team_members = $validatedData['team_members'];
+        $d->TID = $validatedData['TID'];
+        $d->StartDate = $validatedData['StartDate'];
+        $d->Remark = $validatedData['Remark'];
+       
 
 
         // Save the department to the database
-        $department->save();
+        $d->save();
 
         // Attach team members to the department
         if (isset($validatedData['team_members'])) {
             foreach ($validatedData['team_members'] as $userId) {
                 $user = Registration::find($userId);
                 if ($user) {
-                    $user->DID = $department->DID;
+                    $user->TID = $d->id;
                     $user->save();
                 }
             }
         }
+
+
 
 
         // Redirect or return a response as needed

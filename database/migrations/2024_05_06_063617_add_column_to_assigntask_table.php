@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('registration', function (Blueprint $table) {
-           
-           //
+        Schema::table('assigntask', function (Blueprint $table) {
+            $table->json('team_members')->nullable();
         });
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('registration', function (Blueprint $table) {
+        Schema::table('assigntask', function (Blueprint $table) {
             //
         });
     }

@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('assigntask', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('UID')->nullable();
-            $table->foreign('id')->references('id')->on('registration');
             $table->unsignedBigInteger('TID')->nullable();
-            $table->foreign('TID')->references('TID')->on('tasks');
+         
             $table->date('StartDate');
             $table->string('Remark',100);
 
