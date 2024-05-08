@@ -117,16 +117,16 @@
                                 View Assigned Tasks
                             </a>
 
-                            <a class="nav-link text-dark" href="{{ route('addtimeslot') }}">
+                            <a class="nav-link text-dark" href="{{ route('addtimeslot', ['id' => session()->get('id')]) }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-business-time text-dark"></i></div>
                                 Add time-slot 
                             </a>
                            
 
-                            {{-- <a class="nav-link text-dark" href="{{ route('tasksupdate') }}">
+                            <a class="nav-link text-dark" href="{{ route('viewtimeslot',['id'  =>session()->get('id')]) }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-cloud-arrow-up text-dark"></i></div>
-                                Updating Tasks
-                            </a> --}}
+                                View Time Slot
+                            </a>
                             
                             
                         </nav>

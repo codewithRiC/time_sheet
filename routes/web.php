@@ -7,7 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\AssignController;
 use App\Http\Controllers\DepartmentController;
-
+use App\Http\Controllers\AllocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +46,8 @@ Route::get('projectupdate', [UserController::class, 'projectupdate'])->name('pro
 Route::get('tasksupdate', [UserController::class, 'tasksupdate'])->name('tasksupdate');
 Route::get('assigntasks', [UserController::class, 'assigntasks'])->name('assigntasks');
 Route::get('assigntasksview/{id}', [UserController::class, 'assigntasksview'])->name('assigntasksview');
-Route::get('addtimeslot', [UserController::class, 'addtimeslot'])->name('addtimeslot');
+Route::get('addtimeslot/{id}', [UserController::class, 'addtimeslot'])->name('addtimeslot');
+Route::get('viewtimeslot/{id}', [UserController::class, 'viewtimeslot'])->name('viewtimeslot');
 Route::get('projectreport', [UserController::class, 'projectreport'])->name('projectreport');
 Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
 
@@ -84,3 +85,6 @@ Route::post('/editdepartment/{id}', [DepartmentController::class, 'editdepartmen
 
 
 Route::post('/assigntasks',[AssignController::class, 'assigntasks']);
+
+
+Route::post('/addtimeslot',[AllocationController::class, 'allocation']);

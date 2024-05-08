@@ -64,13 +64,11 @@
                                                  <select name="team_members[]" class="form-control" multiple id="team_members_select">
                                                     @foreach ($users as $user)
 
-                                
-                                                        {{-- Fetch the task count for the current user --}}
-                                                        {{-- @php
-                                                            $taskCount = isset($userTaskCounts[$user->id]) ? $userTaskCounts[$user->id] : 0; // Default to 0 if task count not available
-                                                        @endphp --}}
-                                                        {{-- Include task count as a data attribute --}}
-                                                        <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years ({{ $userTaskCounts[$user->id] }} tasks)</option>
+                                                    <option value="{{ $user->id }}" @if ($userTaskCounts[$user->id] == 3) disabled @endif>
+                                                        {{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years ({{ $userTaskCounts[$user->id] }} tasks)
+                                                    </option>
+                                                    
+                                                        {{-- <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->details }} - {{ $user->yoe }} years ({{ $userTaskCounts[$user->id] }} tasks)</option> --}}
                                                     @endforeach
                                                 </select>
                                                 
