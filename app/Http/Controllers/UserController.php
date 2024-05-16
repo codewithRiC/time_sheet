@@ -280,12 +280,34 @@ class UserController extends Controller
 
     public function viewtimeslot($id){
 
-        $user = Allocation::where('UID', $id)->get();
+    //     $user = Allocation::where('UID', $id)->get();
         
        
-        // $task = Tasks::find($user->TID);
-        $data=compact('user');
-       return view('viewtimeslot')->with($data);
+    //     $task = Tasks::find($user->TID);
+    //     $data=compact('user','task');
+    //    return view('viewtimeslot')->with($data);
+
+    $userAllocations = Allocation::where('UID', $id)->get();
+$tasks = [];
+
+foreach ($userAllocations as $allocation) {
+    if ($allocation->TID == 0) {
+        $tasks[] = 'Others';
+    } else {
+        $task = Tasks::find($allocation->TID);
+        if ($task) {
+            $tasks[] = $task->TaskName; // Fetching just the task name
+        }
+    }
+}
+
+$data = [
+    'user' => $userAllocations,
+    'tasks' => $tasks
+];
+
+return view('viewtimeslot', $data);
+
     }
 
     public function addtimeslot($id){

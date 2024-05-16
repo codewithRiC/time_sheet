@@ -26,24 +26,25 @@
                                     {{ $message }}
                                 @enderror
                             </span></div>
-                        <div class="col-md-6"><label class="labels fw-bold ">Date</label><input type="date"
-                                class="form-control" placeholder="date" name="date"
-                                value="{{ date('Y-m-d') }}" >
-                            <span class="text-danger">
-                                @error('date')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
-                        <div class="col-md-6"><label class="labels fw-bold ">Day</label><input type="text"
-                            class="form-control" placeholder="day" name="day"
-                            value="{{ now()->format('l') }}" >
-                        <span class="text-danger">
-                            @error('day')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                            <div class="col-md-6">
+                                <label class="labels fw-bold">Date</label>
+                                <input type="date" class="form-control" placeholder="date" name="date" id="date">
+                                <span class="text-danger">
+                                    @error('date')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels fw-bold">Day</label>
+                                <input type="text" class="form-control" placeholder="day" name="day" id="day" readonly>
+                                <span class="text-danger">
+                                    @error('day')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div>   
                     </div>
                     <div class="form-row mb-2 task-row">
                         <div class="col">
@@ -133,3 +134,12 @@
         });
     });
   </script>
+
+<script>
+    document.getElementById('date').addEventListener('change', function() {
+        var selectedDate = new Date(this.value);
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var dayOfWeek = days[selectedDate.getDay()];
+        document.getElementById('day').value = dayOfWeek;
+    });
+</script>

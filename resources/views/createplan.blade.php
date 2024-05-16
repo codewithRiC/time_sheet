@@ -11,7 +11,7 @@
 <div id="layoutSidenav_content">
 
 
-    <main class="bg-white" >
+    <main class="bg-white">
         {{-- <div class="container m-3"">
             <div id="calendar" class="mt-3" style="height: 20vw; width: 50vw; align:center;"></div>
         </div> --}}
@@ -25,11 +25,20 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-        <!-- Include other necessary JS files for the calendar -->
+
+        <div id='calendar'></div>
+
+        {{-- <form id="eventForm">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" required>
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+            <button type="submit">Add Event</button>
+        </form> --}}
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var calendarEl = document.getElementById('calendar');
-
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     headerToolbar: {
@@ -37,29 +46,59 @@
                     },
                     customButtons: {
                         addEventButton: {
-                            text: 'add event...',
+                            text: 'Add Event...',
                             click: function() {
-                                var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-                                var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-
-                                if (!isNaN(date.valueOf())) { // valid?
-                                    calendar.addEvent({
-                                        title: 'dynamic event',
-                                        start: date,
-                                        allDay: true
-                                    });
-                                    alert('Great. Now, update your database...');
-                                } else {
-                                    alert('Invalid date.');
-                                }
+                                // Show the form when the button is clicked
+                                document.getElementById('eventForm').style.display = 'block';
                             }
                         }
-                    }
+                    },
+                    // Fetch events from the database
+                    events: '/events' // Replace '/events' with your endpoint to fetch events from the database
                 });
-
+        
                 calendar.render();
+        
+                // Handle form submission
+                document.getElementById('eventForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+        
+                    var formData = new FormData(event.target);
+                    var eventData = {
+                        title: formData.get('eventName'),
+                        start: formData.get('eventDate'),
+                        allDay: true // Assuming all events are all-day events
+                    };
+        
+                    // Send event data to the server to store in the database
+                    fetch('/addEvent', {
+                        method: 'POST',
+                        body: JSON.stringify(eventData),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    }).then(function(data) {
+                        // If event added successfully, refresh the calendar to show the new event
+                        calendar.refetchEvents();
+                        alert('Event added successfully.');
+                    }).catch(function(error) {
+                        console.error('Error adding event:', error);
+                        alert('Error adding event. Please try again.');
+                    });
+        
+                    // Clear form fields after submission
+                    document.getElementById('eventName').value = '';
+                    document.getElementById('eventDate').value = '';
+                });
             });
         </script>
+        
+        
 
 
     </main>

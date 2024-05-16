@@ -12,35 +12,39 @@ class AllocationController extends Controller
 {
     public function allocation(Request $request)
     {
-     
         $validatedData = $request->validate([
-            'UID' => 'required',
-            'date'=>'required',
-            'day'=>'required',
-            'TID' => 'nullable',
-            'hours'=> 'nullable|min:0',
-          
+            'UID' => 'required', // Check if UID exists in the users table
+            'date' => 'required',
+            'day' => 'required',
+            'TID' => 'nullable|array', // Ensure TID is an array
+            'hours' => 'nullable|array', // Ensure hours is an array
             'remarks' => 'nullable|string',
-           
-        ]
-      
-    );
-
-     foreach ($validatedData['TID'] as $key => $TID) {
-       
-        $d = new Allocation();
-        $d->UID = $validatedData['UID'];
-        $d->date = $validatedData['date'];
-        $d->day = $validatedData['day'];
-        $d->TID = $validatedData['TID'][$key]; 
-        $d->hours = $validatedData['hours'][$key];
-        $d->remarks = $validatedData['remarks'];
-        $d->save();
-
-    }
- 
+        ]);
+    
+        // Check if an allocation already exists for the same user and date combination
+        $existingAllocation = Allocation::where('UID', $validatedData['UID'])
+                                        ->where('date', $validatedData['date'])
+                                        ->exists();
+        if ($existingAllocation) {
+            return redirect()->back()->withErrors(['date' => 'Time slot already allocated for this date.']);
+        }
+    
+        // Loop through each time slot and save allocation
+        foreach ($validatedData['TID'] as $key => $TID) {
+            $allocation = new Allocation();
+            $allocation->UID = $validatedData['UID'];
+            $allocation->date = $validatedData['date'];
+            $allocation->day = $validatedData['day'];
+            $allocation->TID = $TID; 
+            $allocation->hours = $validatedData['hours'][$key];
+            $allocation->remarks = $validatedData['remarks'];
+            $allocation->save();
+        }
+    
         return redirect()->back();
     }
+    
+    
 
     
 }

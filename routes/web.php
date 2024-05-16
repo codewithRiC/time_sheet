@@ -8,6 +8,7 @@ use App\Http\Controllers\TasksController;
 use App\Http\Controllers\AssignController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AllocationController;
+use App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,3 +89,6 @@ Route::post('/assigntasks',[AssignController::class, 'assigntasks']);
 
 
 Route::post('/addtimeslot',[AllocationController::class, 'allocation']);
+
+Route::get('/events', [EventController::class, 'index']);
+Route::post('/addEvent', [EventController::class, 'store']);

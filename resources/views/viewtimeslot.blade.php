@@ -22,43 +22,28 @@
                             <th>Sl No.</th>
                             <th>Date</th>
                             <th>Day</th>
-                            <th>Total Time Spent</th>
+                            <th>Tasks</th>
+                            <th>Time Spent</th>
                            
-                            <th>Action</th>
+                           
 
                         </tr>
                     </thead>
-
                     <tbody>
                         @php
                             $sno = 1;
                         @endphp
-
-                        @foreach ($user as $u)
+                        @foreach ($user as $index => $u)
                             <tr>
                                 <td>{{ $sno++ }}</td>
-                               
-                               
                                 <td>{{ $u->date }}</td>
                                 <td>{{ $u->day }}</td>
-                                <td>{{ $u->hours}}</td>
-                               
-                                <td>
-
-                                    <div style="display: flex ">
-                                        {{-- <a href="{{ route('allocationdetails', ['id' => $u->DID]) }}"> <button
-                                                class="btn btn-secondary m-1"><i class="fa-solid fa-eye"></i></button></a> --}}
-                                         {{-- <a href="{{ route('editdepartment', ['id' => $u->DID]) }}"> <button
-                                                    class="btn btn-primary m-1"><i class="fa-solid fa-pen"></i></button></a> --}}
-                                        {{-- <a href="{{ url('/departmentupdate/delete/') }}/{{ $u->DID }}"><button
-                                                class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></button></a> --}}
-                                        </div>        
-                                </td>
+                                <td>{{ isset($tasks[$index]) ? $tasks[$index] : '' }}</td> <!-- Access task from $tasks array -->
+                                <td>{{ $u->hours }}</td>
                             </tr>
                         @endforeach
-
-
                     </tbody>
+                    
                 </table>
             </div>
         </div>
