@@ -74,7 +74,7 @@
 
                         @endif
                     </div>
-                    <a class="nav-link text-dark" href="{{ route('employeedashboard') }}">
+                    <a class="nav-link text-dark" href="{{ route('employeedashboard', ['id' => session()->get('id')])}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt text-dark"></i></div>
                         Employee Dashboard
                     </a>
@@ -93,11 +93,11 @@
                                 Create Planning
                             </a>
 
-                           
+{{--                            
                             <a class="nav-link text-dark" href="{{ route('planupdate') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-wrench text-dark"></i></div>
                                 View/Edit Planning
-                            </a>
+                            </a> --}}
 
 
 

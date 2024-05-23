@@ -10,6 +10,8 @@ use App\Models\Department;
 use App\Models\Tasks;
 use App\Models\AssignTask;
 use App\Models\Allocation;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -38,13 +40,84 @@ class UserController extends Controller
     }
 
     public function admindashboard(){
-        return view('admin.dashboard');
+        $employee = DB::table('registration')->where('designation','EMPLOYEE')->get()->count();
+        $manager = DB::table('registration')->where('designation','MANAGER')->get()->count();
+        
+        $t = DB::table('tasks')->get()->count();
+        $project = DB::table('project')->get()->count();
+
+        $userAllocations = Allocation::get();
+        $tasks = [];
+        
+        foreach ($userAllocations as $allocation) {
+            if ($allocation->TID == 0) {
+                $tasks[] = 'Others';
+            } else {
+                $task = Tasks::find($allocation->TID);
+                if ($task) {
+                    $tasks[] = $task->TaskName; // Fetching just the task name
+                }
+            }
+        }
+        
+        // $data = [
+        //     'user' => $userAllocations,
+        //     'tasks' => $tasks
+        // ];
+        
+        $data=compact('employee','manager','t','project','userAllocations','tasks');
+        return view('admin.dashboard')->with($data);
     }
     public function managerdashboard(){
-        return view('manager.dashboard');
+
+        $employee = DB::table('registration')->where('designation','EMPLOYEE')->get()->count();
+        
+        $department = DB::table('department')->get()->count();
+        $t = DB::table('tasks')->get()->count();
+        $project = DB::table('project')->get()->count();
+
+        $userAllocations = Allocation::get();
+        $tasks = [];
+        
+        foreach ($userAllocations as $allocation) {
+            if ($allocation->TID == 0) {
+                $tasks[] = 'Others';
+            } else {
+                $task = Tasks::find($allocation->TID);
+                if ($task) {
+                    $tasks[] = $task->TaskName; // Fetching just the task name
+                }
+            }
+        }
+        
+      
+        
+        $data=compact('employee','department','t','project','userAllocations','tasks');
+        return view('manager.dashboard')->with($data);
+     
     }
-    public function employeedashboard(){
-        return view('employee.dashboard');
+    public function employeedashboard($id){
+       // $id = Auth::Registration()->id;
+        $userAllocations = Allocation::where('UID', $id)->get();
+        
+        $tasks = [];
+        
+        foreach ($userAllocations as $allocation) {
+            if ($allocation->TID == 0) {
+                $tasks[] = 'Others';
+            } else {
+                $task = Tasks::find($allocation->TID);
+                if ($task) {
+                    $tasks[] = $task->TaskName; // Fetching just the task name
+                }
+            }
+        }
+        
+        $data = [
+            'user' => $userAllocations,
+            'tasks' => $tasks
+        ];
+        return view('employee.dashboard')->with($data);
     }
 
     public function profileview($id){
@@ -305,8 +378,9 @@ $data = [
     'user' => $userAllocations,
     'tasks' => $tasks
 ];
-
 return view('viewtimeslot', $data);
+
+
 
     }
 

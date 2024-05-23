@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Registration;
+use App\Models\Project;
+use App\Models\Department;
+use App\Models\Tasks;
+use App\Models\AssignTask;
+use App\Models\Allocation;
 
 class RegistrationController extends Controller
 {
@@ -77,8 +82,8 @@ class RegistrationController extends Controller
         return redirect('managerdashboard');
     }
     if($user->designation=='EMPLOYEE'){
-
-        return redirect('employeedashboard');
+       // return redirect('employeedashboard?id=$user->id');
+        return redirect()->route('employeedashboard', ['id' => $user->id]);
     }
 
    }

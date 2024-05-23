@@ -32,7 +32,7 @@ Route::get('forgetpassword', [UserController::class, 'forgetpassword'])->name('f
 Route::get('resetpassword', [UserController::class, 'resetpassword'])->name('resetpassword');
 Route::get('admindashboard', [UserController::class, 'admindashboard'])->name('admindashboard');
 Route::get('managerdashboard', [UserController::class, 'managerdashboard'])->name('managerdashboard');
-Route::get('employeedashboard', [UserController::class, 'employeedashboard'])->name('employeedashboard');
+Route::get('employeedashboard/{id}', [UserController::class, 'employeedashboard'])->name('employeedashboard');
 Route::get('profileview/{id}', [UserController::class, 'profileview'])->name('profileview');
 Route::get('profileupdate/{id}', [UserController::class, 'profile'])->name('profileupdate');
 Route::get('createemployee', [UserController::class, 'createemployee'])->name('createemployee');

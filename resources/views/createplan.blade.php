@@ -28,13 +28,13 @@
 
         <div id='calendar'></div>
 
-        {{-- <form id="eventForm">
+        <form id="eventForm" style="display:none">
             <label for="eventName">Event Name:</label>
             <input type="text" id="eventName" name="eventName" required>
             <label for="eventDate">Event Date:</label>
             <input type="date" id="eventDate" name="eventDate" required>
             <button type="submit">Add Event</button>
-        </form> --}}
+        </form>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {

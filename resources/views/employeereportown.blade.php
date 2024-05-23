@@ -19,7 +19,7 @@
                                     @csrf
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4 class="text-centre pt-2 "
-                                            style="color:rgb(14, 14, 129);font-weight:700;font-size:20px; ">Project Wise Report</h4>
+                                            style="color:rgb(14, 14, 129);font-weight:700;font-size:20px; ">Self Wise Report</h4>
                                     </div>
                                     @if (session()->has('success'))
                                         <div class="alert alert-success">
