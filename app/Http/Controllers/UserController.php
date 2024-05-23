@@ -321,13 +321,24 @@ return view('viewtimeslot', $data);
     }
 
     public function projectreport(){
-        return view('projectreport');
+
+        $users= Project::all();
+        $data=compact('users');
+    
+        return view('projectreport')->with($data);
+      
     }
 
     public function employeereport(){
-        return view('employeereport');
+        $users= Registration::where('designation','EMPLOYEE')->get();
+        $data=compact('users');
+    
+        return view('employeereport')->with($data);
     }
 
+    public function employeereportown(){
+        return view('employeereportown');
+    }
   
 
 }

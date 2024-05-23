@@ -139,9 +139,9 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area text-dark"></i></div>
                         Project wise Report Generation
                     </a>
-                    <a class="nav-link text-dark" href="{{ route('employeereport') }}">
+                    <a class="nav-link text-dark" href="{{ route('employeereportown') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-table text-dark"></i></div>
-                        Employee wise Report Generation
+                        Self Report Generation
                     </a>
                 </div>
             </div>

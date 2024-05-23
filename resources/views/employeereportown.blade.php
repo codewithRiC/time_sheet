@@ -3,11 +3,9 @@
 @endpush
 
 
-@if (session()->get('designation')=="ADMIN")
-@include('layouts.adminheader')
-@elseif (session()->get('designation')=="MANAGER")
-@include('layouts.managerheader')   
-
+ 
+@if (session()->get('designation')=="EMPLOYEE")
+@include('layouts.employeeheader')       
 @endif
 
 
@@ -17,7 +15,7 @@
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="p-4 py-3">
-                                <form action="" method="post">
+                                <form action="{{ url('/') }}/createtasks" method="post">
                                     @csrf
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4 class="text-centre pt-2 "
@@ -32,21 +30,7 @@
                                  
         
                                     <div class="row mt-2">
-                                        <div class="col-md-12 "><label class="labels fw-bold  ">Employee Name</label>
-                                            <select name="PID" class="form-control">
-                                                <option selected>Select the Employee</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->UID}}">{{ $user->UID }} - {{ $user->name }} 
-                                                       </option>
-                                                @endforeach
-        
-                                            </select>
-                                            <span class="text-danger">
-                                                @error('PID')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
-                                        </div>
+                                        
                                         <div class="col-md-6 mt-2 "><label class="labels fw-bold">Start Date</label><input
                                                 type="date" class="form-control" placeholder="start date" name="TStartDate"
                                                 value=""> <span class="text-danger">
@@ -75,7 +59,6 @@
         
                     </div>
                 </div>
-        
     </main>
 
     </div>

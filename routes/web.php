@@ -9,6 +9,8 @@ use App\Http\Controllers\AssignController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AllocationController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PdfController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +53,7 @@ Route::get('addtimeslot/{id}', [UserController::class, 'addtimeslot'])->name('ad
 Route::get('viewtimeslot/{id}', [UserController::class, 'viewtimeslot'])->name('viewtimeslot');
 Route::get('projectreport', [UserController::class, 'projectreport'])->name('projectreport');
 Route::get('employeereport', [UserController::class, 'employeereport'])->name('employeereport');
+Route::get('employeereportown', [UserController::class, 'employeereportown'])->name('employeereportown');
 
 Route::post('/profileupdate/{id}', [UserController::class, 'profileupdate']);
 Route::get('/employeeupdate/delete/{id}',[UserController::class, 'delete']);
@@ -92,3 +95,5 @@ Route::post('/addtimeslot',[AllocationController::class, 'allocation']);
 
 Route::get('/events', [EventController::class, 'index']);
 Route::post('/addEvent', [EventController::class, 'store']);
+
+Route::post('projectreportpdf',[PdfController::class,'projectreportpdf'])->name('projectreportpdf');
