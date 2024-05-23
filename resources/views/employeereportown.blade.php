@@ -15,7 +15,7 @@
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="p-4 py-3">
-                                <form action="{{ url('/') }}/createtasks" method="post">
+                                <form action="{{route('employeereportpdf') }}" method="post">
                                     @csrf
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4 class="text-centre pt-2 "
@@ -32,14 +32,14 @@
                                     <div class="row mt-2">
                                         
                                         <div class="col-md-6 mt-2 "><label class="labels fw-bold">Start Date</label><input
-                                                type="date" class="form-control" placeholder="start date" name="TStartDate"
+                                                type="date" class="form-control" placeholder="start date" name="StartDate"
                                                 value=""> <span class="text-danger">
                                                 @error('TStartDate')
                                                     {{ $message }}
                                                 @enderror
                                             </span></div>
                                         <div class="col-md-6 mt-2 "><label class="labels  fw-bold">Last Date</label><input
-                                                type="date" class="form-control" placeholder="last date" name="TEndDate"
+                                                type="date" class="form-control" placeholder="last date" name="EndDate"
                                                 value=""> <span class="text-danger">
                                                 @error('TEndDate')
                                                     {{ $message }}

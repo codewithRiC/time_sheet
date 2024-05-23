@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Project Report Pdf</title>
+  <title>Employee Report own Pdf</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -34,14 +34,9 @@
     <tbody>
      @php
          $sno =1;
-         $total = 0;
-                  
+    
     @endphp 
     @foreach ($tasks as $t )
-    @php
-    $total += $t->hours;
-
-@endphp
     <tr>
         <td>{{ $sno++ }}</td>
         <td>{{ $t->user_name }}</td>
@@ -51,11 +46,7 @@
         <td>{{ $t->hours }}</td>
       </tr>
     @endforeach
-    <tr >
-      <td colspan="5" style="text-align:right;font:bold">Total</td>
       
-      <td style="text-align:right;font:bold">{{ $total }}</td>
-  </tr>
  
     </tbody>
   </table>

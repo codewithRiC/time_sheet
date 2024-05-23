@@ -97,3 +97,5 @@ Route::get('/events', [EventController::class, 'index']);
 Route::post('/addEvent', [EventController::class, 'store']);
 
 Route::post('projectreportpdf',[PdfController::class,'projectreportpdf'])->name('projectreportpdf');
+Route::post('employeereportpdf',[PdfController::class,'employeereportpdf'])->name('employeereportpdf');
+Route::post('employeereportownpdf',[PdfController::class,'employeereportownpdf'])->name('employeereportownpdf');
