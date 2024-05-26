@@ -34,6 +34,17 @@ class TasksController extends Controller
             'Priority.required' => 'The priority is required.',
             'PID.required'=>'The Project need to be assigned.'
         ]);
+
+        $project = Project::find($req->PID);
+
+        if ($req->TStartDate < $project->PStartDate) {
+            return back()->withErrors(['TStartDate' => 'Start Date must not be less than Project Start Date.'])->withInput();
+        }
+    
+        if ($req->TEndDate > $project->PEndDate) {
+            return back()->withErrors(['TEndDate' => 'End Date must not be more than Project End Date.'])->withInput();
+        }
+    
         
     
         //insert query

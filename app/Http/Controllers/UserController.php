@@ -49,6 +49,7 @@ class UserController extends Controller
         $userAllocations = Allocation::get();
         $tasks = [];
         
+        $userAllocations = $userAllocations->reverse();
         foreach ($userAllocations as $allocation) {
             if ($allocation->TID == 0) {
                 $tasks[] = 'Others';
@@ -59,6 +60,7 @@ class UserController extends Controller
                 }
             }
         }
+        $tasks = array_reverse($tasks);
         
         // $data = [
         //     'user' => $userAllocations,
@@ -78,6 +80,8 @@ class UserController extends Controller
 
         $userAllocations = Allocation::get();
         $tasks = [];
+
+        $userAllocations = $userAllocations->reverse();
         
         foreach ($userAllocations as $allocation) {
             if ($allocation->TID == 0) {
@@ -90,6 +94,7 @@ class UserController extends Controller
             }
         }
         
+        $tasks = array_reverse($tasks);
       
         
         $data=compact('employee','department','t','project','userAllocations','tasks');
@@ -101,6 +106,8 @@ class UserController extends Controller
         $userAllocations = Allocation::where('UID', $id)->get();
         
         $tasks = [];
+
+        $userAllocations = $userAllocations->reverse();
         
         foreach ($userAllocations as $allocation) {
             if ($allocation->TID == 0) {
@@ -113,6 +120,7 @@ class UserController extends Controller
             }
         }
         
+        $tasks = array_reverse($tasks);
         $data = [
             'user' => $userAllocations,
             'tasks' => $tasks
@@ -363,6 +371,8 @@ class UserController extends Controller
     $userAllocations = Allocation::where('UID', $id)->get();
 $tasks = [];
 
+$userAllocations = $userAllocations->reverse();
+
 foreach ($userAllocations as $allocation) {
     if ($allocation->TID == 0) {
         $tasks[] = 'Others';
@@ -374,6 +384,7 @@ foreach ($userAllocations as $allocation) {
     }
 }
 
+$tasks = array_reverse($tasks);
 $data = [
     'user' => $userAllocations,
     'tasks' => $tasks
