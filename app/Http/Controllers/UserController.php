@@ -308,13 +308,7 @@ class UserController extends Controller
 
         }, $userIds);
         
-        // Now $userIds contains user IDs with each value wrapped in double quotes
-        
-        // dd($userIds);
        
-        // $userIds = ["1","2","5","6","7","8","9","10","11","12","14","17"];
-
-        // Initialize an array to store the task counts for each user
         $userTaskCounts = [];
         
         // Loop through each user ID (UID) to count tasks for each user
@@ -326,24 +320,25 @@ class UserController extends Controller
             if (AssignTask::whereJsonContains('team_members', $userId)->exists()) {
                 // Find TIDs for the current user by comparing $userId with the IDs present in the team_members array
                 $tids = AssignTask::whereJsonContains('team_members', $userId)->pluck('TID');
-                $taskCount = Tasks::whereIn('TID', $tids)->count();
-                // print_r($tids);
+                $taskCount = Tasks::whereIn('TID', $tids)
+                ->whereNotIn('Status', ['Completed', 'Cancelled'])
+                ->count();
+               
 
             } else {
-                // If user ID doesn't exist in team_members, set task count to 0
+               
                 $taskCount = 0;
                 
             }
   
-            // Store the task count for the current user in the array
             $userTaskCounts[$userId] = $taskCount;
-            // print_r($taskCount);
+           
         }
         
 // exit;
 
         $users= Registration::where('designation','EMPLOYEE')->get();
-        $task= Tasks::all();
+        $task = Tasks::whereNotIn('Status', ['Completed', 'Cancelled'])->get();
         $data=compact('users','task','userTaskCounts');
 
         return view('assigntasks')->with($data);
@@ -398,7 +393,9 @@ return view('viewtimeslot', $data);
     public function addtimeslot($id){
         $tids = AssignTask::whereJsonContains('team_members', $id)->pluck('TID');
 
-        $task = Tasks::whereIn('TID', $tids)->get();
+        $task = Tasks::whereIn('TID', $tids)
+        ->whereNotIn('Status', ['Completed', 'Cancelled'])
+        ->get();
         
         $data=compact('task','id');
 
@@ -424,9 +421,26 @@ return view('viewtimeslot', $data);
     public function employeereportown(){
         return view('employeereportown');
     }
+
+    public function viewassigntasks(){
+        $tasks = DB::table('assigntask')
+        ->join('tasks', 'assigntask.TID', '=', 'tasks.TID')
+        ->join('registration', DB::raw("JSON_CONTAINS(assigntask.team_members, JSON_QUOTE(CAST(registration.id AS CHAR(100))), '$')"), '>', DB::raw('0'))
+        ->select(
+            'assigntask.TID',
+            'assigntask.StartDate',
+            'tasks.TaskName',
+            'assigntask.team_members',
+            'registration.name as team_member_name'
+        )
+        ->get();
+
+return view('viewassigntasks', compact('tasks'));
+    }
   
 
 }
+
 
 
 

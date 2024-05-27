@@ -131,6 +131,10 @@
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-share text-dark"></i></div>
                                     Assigning Tasks
                                 </a>
+                                <a class="nav-link text-dark" href="{{ route('viewassigntasks') }}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-wrench text-dark"></i></div>
+                                    View/Edit Assigned Task
+                                </a>
                                 <a class="nav-link text-dark" href="{{ route('tasksupdate') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-sliders text-dark"></i></div>
                                     View/Edit Tasks

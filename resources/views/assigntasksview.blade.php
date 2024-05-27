@@ -68,14 +68,14 @@
                                 <td>{{ date_format(date_create($u->TStartDate), 'd-M-Y') }}</td>
                                 <td>{{ date_format(date_create($u->TEndDate), 'd-M-Y') }}</td>
 
-                                @php
+                                {{-- @php
                                      $startDate = \Carbon\Carbon::now();
                                     $endDate = \Carbon\Carbon::parse($u->PEndDate);
 
                                     $numberOfDays = $endDate->diffInDays($startDate);
 
-                                @endphp
-                                <td>{{ $numberOfDays }}-{{ $progressRatio }}%</td>
+                                @endphp --}}
+                                <td>{{ $remainingDays }}</td>
                                 <td>{{ $u->Status }}</td>
 
                                 <td><span  style="color: 

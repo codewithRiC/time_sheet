@@ -70,14 +70,14 @@
                                         <td>{{ date_format(date_create($u->TStartDate), 'd-M-Y') }}</td>
                                         <td>{{ date_format(date_create($u->TEndDate), 'd-M-Y') }}</td>
         
-                                        @php
+                                        {{-- @php
                                              $startDate = \Carbon\Carbon::now();
                                             $endDate = \Carbon\Carbon::parse($u->PEndDate);
         
                                             $numberOfDays = $endDate->diffInDays($startDate);
         
-                                        @endphp
-                                        <td>{{ $numberOfDays }}-{{ $progressRatio }}%</td>
+                                        @endphp --}}
+                                        <td>{{ $remainingDays }}</td>
                                         <td>{{ $u->Status }}</td>
         
                                         <td><span  style="color: 
@@ -114,10 +114,11 @@
                                                 <a href="{{ route('viewtasks', ['id' => $u->TID]) }}"> <button
                                                         class="btn btn-secondary m-1"><i class="fa-solid fa-eye"></i></button></a>
                                                  <a href="{{ route('edittasks', ['id' => $u->TID]) }}"> <button
-                                                            class="btn btn-primary m-1"><i class="fa-solid fa-pen"></i></button></a>
-                                                <a href="{{ url('/tasksupdate/delete/') }}/{{ $u->TID }}"><button
+
+                                                            class="btn btn-primary m-1"    @if($u->Status == 'Cancelled' || $u->Status == 'Completed') disabled @endif><i class="fa-solid fa-pen"></i></button></a>
+                                                {{-- <a href="{{ url('/tasksupdate/delete/') }}/{{ $u->TID }}"><button
                                                         class="btn btn-danger m-1"><i class="fa-solid fa-trash"></i></button></a>
-                                                </div>        
+                                                </div>         --}}
                                         </td>
                                     </tr>
                                 @endforeach

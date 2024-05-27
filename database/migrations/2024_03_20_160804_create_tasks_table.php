@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('EmployeeNote',150)->nullable();
             $table->string('ManagerNote',150)->nullable();
             $table->unsignedBigInteger('PID');
-            $table->foreign('PID')->references('PID')->on('project');
+            $table->foreign('PID')->references('PID')->on('project')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@ class AssignController extends Controller
 
         // Redirect or return a response as needed
         // For example, you might redirect back to a page after successful creation
-        return redirect()->back()->with('success', 'Department created successfully.');
+        return redirect()->back()->with('success', 'Assigned successfully.');
     }
 
 }

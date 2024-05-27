@@ -41,6 +41,7 @@ Route::get('managerupdate', [UserController::class, 'managerupdate'])->name('man
 Route::get('employeeupdate', [UserController::class, 'employeeupdate'])->name('employeeupdate');
 Route::get('createdepartment', [UserController::class, 'createdepartment'])->name('createdepartment');
 Route::get('departmentupdate', [UserController::class, 'departmentupdate'])->name('departmentupdate');
+Route::get('viewassigntasks', [UserController::class, 'viewassigntasks'])->name('viewassigntasks');
 Route::get('createplan', [UserController::class, 'createplan'])->name('createplan');
 Route::get('planupdate', [UserController::class, 'planupdate'])->name('planupdate');
 Route::get('createproject', [UserController::class, 'createproject'])->name('createproject');

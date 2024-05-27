@@ -51,7 +51,7 @@
                                         @foreach ($users as $user)
                                             <option value="{{ $user->PID}}">{{ $user->PID }} -
                                                 {{ $user->ProjectName }} -
-                                                {{ $user->Priority }} </option>
+                                                {{ $user->Priority }} -{{ $user->PStartDate }}-{{ $user->PEndDate }}</option>
                                         @endforeach
 
                                     </select>

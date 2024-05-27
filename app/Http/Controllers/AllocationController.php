@@ -20,6 +20,24 @@ class AllocationController extends Controller
             'hours' => 'nullable|array', // Ensure hours is an array
             'remarks' => 'nullable|string',
         ]);
+
+        // $messages = [
+        //     'hours.max' => 'The sum of hours cannot exceed 9.',
+        // ];
+        
+        // // Validate the request data
+        // $validator = Validator::make($request->all(), $rules, $messages);
+        
+        // // Define custom validation rule to check if the sum of hours does not exceed 9
+        // $validator->sometimes(['TID', 'hours'], 'custom_hours_limit', function ($input) {
+        //     return !empty($input['hours']);
+        // });
+        
+        // // Custom validation rule to check if the sum of hours does not exceed 9
+        // Validator::extend('custom_hours_limit', function ($attribute, $value, $parameters, $validator) {
+        //     $sumHours = array_sum($value);
+        //     return $sumHours <= 9;
+        // });
     
         // Check if an allocation already exists for the same user and date combination
         $existingAllocation = Allocation::where('UID', $validatedData['UID'])

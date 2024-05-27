@@ -11,7 +11,8 @@ class Registration extends Model
     protected $table ="registration";
     protected $primaryKey ="id";
     protected $fillable=[
-        'image'
+        'image',
+        'TID'
     ];
 
     public function setNameAttribute($value){
