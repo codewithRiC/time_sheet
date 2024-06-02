@@ -130,140 +130,131 @@
   
    
 
-$currentDate = \Carbon\Carbon::now();
+  $currentDate = \Carbon\Carbon::now();
 
+$endDate = $currentDate->format('Y-m-d');
+$startDate = $currentDate->subDays(7)->format('Y-m-d');
 
-    $endDate = $currentDate->format('Y-m-d');
-    $startDate = $currentDate->subDays(7)->format('Y-m-d');
+$allocations = DB::table('allocation as a')
+->join('tasks as t', 'a.TID', '=', 't.TID')
+    ->select(
+        DB::raw('DATE(a.date) as date'),
+        DB::raw('SUM(a.hours) as total_hours'),
+        't.TaskName'
+    )
+    ->whereBetween('a.date', [$startDate, $endDate])
+    ->groupBy(DB::raw('DATE(a.date)'), 't.TaskName')
+    ->orderBy('date', 'asc')
+    ->get();
 
-    $allocations = DB::table('allocation as a')
-        ->join('tasks as t', 'a.TID', '=', 't.TID')
-        ->select(
-            DB::raw('DATE(a.date) as date'),
-            DB::raw('SUM(a.hours) as total_hours'),
-            't.TaskName'
-        )
-        ->whereBetween('a.date', [$startDate, $endDate])
-        ->groupBy(DB::raw('DATE(a.date)'), 't.TaskName')
-        ->orderBy('date', 'asc')
-        ->get();
+$dates = [];
+$totalHoursPerDay = [];
+$totalHoursPerTask = [];
+$taskNames = [];
 
-    // print_r($allocations['date']);
-    $d=[];
-    $t=[];
-    $tname = [];
-    foreach ($allocations as $alt){
-        $d[]=  $alt->date;
-        $t[] =   $alt->total_hours;
-        $tname[] = $alt->TaskName;
-    }
+foreach ($allocations as $allocation) {
+    $dates[] = $allocation->date;
+    $totalHoursPerDay[$allocation->date] = ($totalHoursPerDay[$allocation->date] ?? 0) + $allocation->total_hours;
+    $totalHoursPerTask[$allocation->TaskName] = ($totalHoursPerTask[$allocation->TaskName] ?? 0) + $allocation->total_hours;
+    $taskNames[$allocation->TaskName] = $allocation->TaskName;
+}
 
-  
-  
-  
+$dates = array_values(array_unique($dates));
+$taskNames = array_values(array_unique($taskNames));
+$sumHoursPerDay = array_values($totalHoursPerDay);
+$sumHoursPerTask = array_values($totalHoursPerTask);
 @endphp
+
 <script>
-    // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
-
-// Area Chart Example
-var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: @json($d),
-    datasets: [{
-      label: "Hours",
-      lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
-      borderColor: "rgba(2,117,216,1)",
-      pointRadius: 5,
-      pointBackgroundColor: "rgba(2,117,216,1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
-    //   pointHoverRadius: 5,
-    //   pointHoverBackgroundColor: "rgba(2,117,216,1)",
-      pointHitRadius: 50,
-      pointBorderWidth: 2,
-      data: @json($t),
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'date'
+    // Area Chart Example
+    var ctx = document.getElementById("myAreaChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @json($dates),
+            datasets: [{
+                label: "Hours",
+                lineTension: 0.3,
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                data: @json($sumHoursPerDay),
+            }],
         },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 7
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 7
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 80,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .125)",
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
         }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 12,
-          maxTicksLimit: 5
+    });
+
+    // Bar Chart Example
+    var ctx = document.getElementById("myBarChart");
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @json($taskNames),
+            datasets: [{
+                label: "Hours",
+                backgroundColor: "rgba(2,117,216,1)",
+                borderColor: "rgba(2,117,216,1)",
+                data: @json($sumHoursPerTask),
+            }],
         },
-        gridLines: {
-          color: "rgba(0, 0, 0, .125)",
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
         }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-
-// Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
-
-// Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myLineChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: @json($tname),
-    datasets: [{
-      label: "Hours",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: @json($t),
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 12,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          display: true
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-
-
+    });
 </script>
